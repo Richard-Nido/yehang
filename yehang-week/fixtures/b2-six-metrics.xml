@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<HealthData locale="en_US">
+  <Record type="HKCategoryTypeIdentifierSleepAnalysis" sourceName="watch_1" startDate="2026-11-02 23:10:00 +0800" endDate="2026-11-03 01:45:00 +0800" value="HKCategoryValueSleepAnalysisInBed" />
+  <Record type="HKCategoryTypeIdentifierSleepAnalysis" sourceName="watch_1" startDate="2026-11-02 23:30:00 +0800" endDate="2026-11-03 01:30:00 +0800" value="HKCategoryValueSleepAnalysisAsleepCore" />
+  <Record type="HKCategoryTypeIdentifierSleepAnalysis" sourceName="watch_1" startDate="2026-11-03 00:30:00 +0800" endDate="2026-11-03 01:00:00 +0800" value="HKCategoryValueSleepAnalysisAsleepDeep" />
+  <Record type="HKCategoryTypeIdentifierSleepAnalysis" sourceName="watch_1" startDate="2026-11-03 00:00:00 +0800" endDate="2026-11-03 00:15:00 +0800" value="HKCategoryValueSleepAnalysisAwake" />
+  <Record type="HKQuantityTypeIdentifierHeartRate" sourceName="watch_1" unit="count/min" value="60" startDate="2026-11-03 10:00:00 +0800" endDate="2026-11-03 10:00:00 +0800" />
+  <Record type="HKQuantityTypeIdentifierRestingHeartRate" sourceName="watch_1" unit="count/min" value="55" startDate="2026-11-03 10:01:00 +0800" endDate="2026-11-03 10:01:00 +0800" />
+  <Record type="HKQuantityTypeIdentifierHeartRateVariabilitySDNN" sourceName="watch_1" unit="s" value="0.05" startDate="2026-11-03 10:02:00 +0800" endDate="2026-11-03 10:02:00 +0800" />
+  <Record type="HKQuantityTypeIdentifierStepCount" sourceName="watch_1" unit="count" value="1200" startDate="2026-11-03 10:03:00 +0800" endDate="2026-11-03 10:10:00 +0800" />
+  <Record type="HKQuantityTypeIdentifierActiveEnergyBurned" sourceName="watch_1" unit="Cal" value="10" startDate="2026-11-03 10:04:00 +0800" endDate="2026-11-03 10:10:00 +0800" />
+</HealthData>

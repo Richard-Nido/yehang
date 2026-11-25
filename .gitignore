@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.py[cod]
+.local/
+*.db
+*.db-*
+*.sqlite*
+.env
+.env.*
+.streamlit/secrets.toml
+*.bundle
+*.zip
+output/playwright/
+.ruff_cache/
+.DS_Store
+大模型API.txt

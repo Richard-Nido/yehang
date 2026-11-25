@@ -1,0 +1,94 @@
+[
+  {
+    "id": "regularity",
+    "version": "1.0",
+    "title": "规律作息",
+    "organization": "全国爱卫办／国家卫生健康委",
+    "url": "https://www.nhc.gov.cn/guihuaxxs/c100133/202503/70d5836afe804a858b899ee951a24a13.shtml",
+    "verified_url": "https://www.fuzhou.gov.cn/zgfzzt/ylws/jbfk/202503/t20250320_4991890.htm",
+    "retrieved": "2026-11-24",
+    "tags": [
+      "day",
+      "rest",
+      "unknown"
+    ],
+    "summary": "在可调整的日程内，逐步保持较稳定的入睡和起床安排。",
+    "population": "成人；未成年人不适用本版规则",
+    "conditions": "适用于一般成人作息教育；固定夜班不能直接套用普通日班的睡眠钟点。",
+    "limitations": "科普信息，不能证明对某个用户的干预效果。",
+    "action": "按日程调整作息，避免把一般推荐钟点强加给轮班者。",
+    "action_id": "act_regularity",
+    "internal_review": "source_checked_by_codex",
+    "external_review": "not_reviewed",
+    "source_access": "原站 412；已核对官方转载，来源标注国家卫生健康委"
+  },
+  {
+    "id": "environment",
+    "version": "1.0",
+    "title": "睡前习惯与环境",
+    "organization": "全国爱卫办／国家卫生健康委",
+    "url": "https://www.nhc.gov.cn/guihuaxxs/c100133/202503/70d5836afe804a858b899ee951a24a13.shtml",
+    "verified_url": "https://www.fuzhou.gov.cn/zgfzzt/ylws/jbfk/202503/t20250320_4991890.htm",
+    "retrieved": "2026-11-24",
+    "tags": [
+      "day",
+      "rest",
+      "night",
+      "recovery",
+      "unknown"
+    ],
+    "summary": "为准备睡眠的时段安排安静舒适的环境，减少睡前电子娱乐和含咖啡因饮品。",
+    "population": "成人；未成年人不适用本版规则",
+    "conditions": "按个人可调整事项选择；不预设统一咖啡因截止时间或剂量。",
+    "limitations": "一般健康教育，不能由单日手表数据认定咖啡因导致异常。",
+    "action": "先挑一项可调整的睡前习惯，并记录实施后的主观感受。",
+    "action_id": "act_environment",
+    "internal_review": "source_checked_by_codex",
+    "external_review": "not_reviewed",
+    "source_access": "原站 412；已核对官方转载，来源标注国家卫生健康委"
+  },
+  {
+    "id": "planned_nap",
+    "version": "1.0",
+    "title": "轮班场景的计划小睡",
+    "organization": "CDC/NIOSH",
+    "url": "https://www.cdc.gov/niosh/work-hour-training-for-nurses/longhours/mod5/11.html",
+    "verified_url": "https://www.cdc.gov/niosh/work-hour-training-for-nurses/longhours/mod5/11.html",
+    "retrieved": "2026-11-24",
+    "tags": [
+      "night",
+      "recovery"
+    ],
+    "summary": "工作休息期间的短时小睡可作为缓解困倦的一种策略，需具备许可和适合环境。",
+    "population": "成人；未成年人不适用本版规则",
+    "conditions": "在工作场所须符合机构规定，不能替代主要睡眠或据此判断可安全上岗。",
+    "limitations": "护士培训资料，不直接证明对所有晚睡人群有效，也不是个体治疗处方。",
+    "action": "如果本人愿意且安排允许，可在程序给出的候选窗口中自行选择休息机会。",
+    "action_id": "act_planned_nap",
+    "internal_review": "source_checked_by_codex",
+    "external_review": "not_reviewed",
+    "source_access": "机构原网页已核对"
+  },
+  {
+    "id": "sleep_inertia",
+    "version": "1.0",
+    "title": "醒后困倦与关键任务",
+    "organization": "CDC/NIOSH",
+    "url": "https://www.cdc.gov/niosh/work-hour-training-for-nurses/longhours/mod7/03.html",
+    "verified_url": "https://www.cdc.gov/niosh/work-hour-training-for-nurses/longhours/mod7/03.html",
+    "retrieved": "2026-11-24",
+    "tags": [
+      "night",
+      "recovery"
+    ],
+    "summary": "醒后可能短暂反应变慢，执行关键任务前需要留意困倦是否消退。",
+    "population": "成人；未成年人不适用本版规则",
+    "conditions": "醒后状态因人和睡眠不足程度而异，不保证固定缓冲时间后即可驾驶或工作。",
+    "limitations": "培训材料总结，不能推断具体个人醒后恢复所需分钟。",
+    "action": "安排休息时同时考虑醒后的缓冲和实际清醒状态。",
+    "action_id": "act_sleep_inertia",
+    "internal_review": "source_checked_by_codex",
+    "external_review": "not_reviewed",
+    "source_access": "机构原网页已核对"
+  }
+]

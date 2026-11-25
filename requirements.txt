@@ -1,0 +1,8 @@
+fastapi==0.165.0
+uvicorn==0.54.0
+httpx==0.28.1
+ijson==3.6.0
+pypdfium2==5.15.2
+Pillow==13.0.0
+keyring==25.7.0
+tzdata>=2025.2

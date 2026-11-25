@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#f6f7f3" />
+    <title>夜航 · 身体与日程</title>
+    <link rel="icon" href="/assets/mark.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/assets/style.css" />
+  </head>
+  <body>
+    <a class="skip" href="#content">跳到内容</a>
+    <aside>
+      <a class="brand" href="#home"
+        ><img alt="" src="/assets/mark.svg" /><strong>夜航</strong></a
+      >
+      <nav aria-label="主导航" id="nav"></nav>
+      <div class="sidefoot">
+        <button id="settings" class="navItem"></button>
+        <div class="profile">
+          <i></i><span id="profileLabel">我的档案</span
+          ><button id="profile" class="quiet">切换</button>
+        </div>
+      </div>
+    </aside>
+    <main id="content" tabindex="-1">
+      <header>
+        <div>
+          <small id="kicker"></small>
+          <h1 id="title">健康总览</h1>
+        </div>
+        <div id="action"></div>
+      </header>
+      <div id="screen" aria-live="polite"><p>正在读取本机记录…</p></div>
+    </main>
+    <dialog id="sheet">
+      <div class="sheethead">
+        <h2></h2>
+        <button class="close" aria-label="关闭">×</button>
+      </div>
+      <div id="sheetbody"></div>
+    </dialog>
+    <div class="busy" role="status" hidden>
+      <div class="spin"></div>
+      <strong></strong><progress max="100"></progress>
+    </div>
+    <div id="toast" role="status" hidden></div>
+    <script type="module" src="/assets/app.js"></script>
+  </body>
+</html>

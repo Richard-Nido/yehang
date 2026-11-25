@@ -1,0 +1,1563 @@
+{
+  "schema_version": "1.0",
+  "mode": "synthetic",
+  "records": [
+    {
+      "id": "2026-10-06-sleep",
+      "metric": "sleep",
+      "start": "2026-10-06T00:00:00+08:00",
+      "end": "2026-10-06T07:00:00+08:00",
+      "source": "watch_1",
+      "value": "asleep",
+      "unit": "stage"
+    },
+    {
+      "id": "2026-10-06-heart_rate",
+      "metric": "heart_rate",
+      "start": "2026-10-06T07:03:00+08:00",
+      "end": "2026-10-06T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 77,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-06-resting_hr",
+      "metric": "resting_hr",
+      "start": "2026-10-06T07:03:00+08:00",
+      "end": "2026-10-06T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 59,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-06-hrv_sdnn",
+      "metric": "hrv_sdnn",
+      "start": "2026-10-06T07:03:00+08:00",
+      "end": "2026-10-06T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 48,
+      "unit": "ms"
+    },
+    {
+      "id": "2026-10-06-steps",
+      "metric": "steps",
+      "start": "2026-10-06T07:00:00+08:00",
+      "end": "2026-10-06T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 3400,
+      "unit": "count"
+    },
+    {
+      "id": "2026-10-06-active_energy",
+      "metric": "active_energy",
+      "start": "2026-10-06T07:00:00+08:00",
+      "end": "2026-10-06T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 182,
+      "unit": "kcal"
+    },
+    {
+      "id": "2026-10-07-sleep",
+      "metric": "sleep",
+      "start": "2026-10-07T08:00:00+08:00",
+      "end": "2026-10-07T14:00:00+08:00",
+      "source": "watch_1",
+      "value": "asleep",
+      "unit": "stage"
+    },
+    {
+      "id": "2026-10-07-heart_rate",
+      "metric": "heart_rate",
+      "start": "2026-10-07T14:03:00+08:00",
+      "end": "2026-10-07T14:03:00+08:00",
+      "source": "watch_1",
+      "value": 78,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-07-resting_hr",
+      "metric": "resting_hr",
+      "start": "2026-10-07T14:03:00+08:00",
+      "end": "2026-10-07T14:03:00+08:00",
+      "source": "watch_1",
+      "value": 60,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-07-hrv_sdnn",
+      "metric": "hrv_sdnn",
+      "start": "2026-10-07T14:03:00+08:00",
+      "end": "2026-10-07T14:03:00+08:00",
+      "source": "watch_1",
+      "value": 47,
+      "unit": "ms"
+    },
+    {
+      "id": "2026-10-07-steps",
+      "metric": "steps",
+      "start": "2026-10-07T14:00:00+08:00",
+      "end": "2026-10-07T14:03:00+08:00",
+      "source": "watch_1",
+      "value": 3671,
+      "unit": "count"
+    },
+    {
+      "id": "2026-10-07-active_energy",
+      "metric": "active_energy",
+      "start": "2026-10-07T14:00:00+08:00",
+      "end": "2026-10-07T14:03:00+08:00",
+      "source": "watch_1",
+      "value": 193,
+      "unit": "kcal"
+    },
+    {
+      "id": "2026-10-08-sleep",
+      "metric": "sleep",
+      "start": "2026-10-08T00:00:00+08:00",
+      "end": "2026-10-08T07:00:00+08:00",
+      "source": "watch_1",
+      "value": "asleep",
+      "unit": "stage"
+    },
+    {
+      "id": "2026-10-08-heart_rate",
+      "metric": "heart_rate",
+      "start": "2026-10-08T07:03:00+08:00",
+      "end": "2026-10-08T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 79,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-08-resting_hr",
+      "metric": "resting_hr",
+      "start": "2026-10-08T07:03:00+08:00",
+      "end": "2026-10-08T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 61,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-08-hrv_sdnn",
+      "metric": "hrv_sdnn",
+      "start": "2026-10-08T07:03:00+08:00",
+      "end": "2026-10-08T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 46,
+      "unit": "ms"
+    },
+    {
+      "id": "2026-10-08-steps",
+      "metric": "steps",
+      "start": "2026-10-08T07:00:00+08:00",
+      "end": "2026-10-08T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 3942,
+      "unit": "count"
+    },
+    {
+      "id": "2026-10-08-active_energy",
+      "metric": "active_energy",
+      "start": "2026-10-08T07:00:00+08:00",
+      "end": "2026-10-08T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 204,
+      "unit": "kcal"
+    },
+    {
+      "id": "2026-10-09-sleep",
+      "metric": "sleep",
+      "start": "2026-10-09T00:00:00+08:00",
+      "end": "2026-10-09T07:00:00+08:00",
+      "source": "watch_1",
+      "value": "asleep",
+      "unit": "stage"
+    },
+    {
+      "id": "2026-10-09-heart_rate",
+      "metric": "heart_rate",
+      "start": "2026-10-09T07:03:00+08:00",
+      "end": "2026-10-09T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 80,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-09-resting_hr",
+      "metric": "resting_hr",
+      "start": "2026-10-09T07:03:00+08:00",
+      "end": "2026-10-09T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 62,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-09-hrv_sdnn",
+      "metric": "hrv_sdnn",
+      "start": "2026-10-09T07:03:00+08:00",
+      "end": "2026-10-09T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 45,
+      "unit": "ms"
+    },
+    {
+      "id": "2026-10-09-steps",
+      "metric": "steps",
+      "start": "2026-10-09T07:00:00+08:00",
+      "end": "2026-10-09T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 4213,
+      "unit": "count"
+    },
+    {
+      "id": "2026-10-09-active_energy",
+      "metric": "active_energy",
+      "start": "2026-10-09T07:00:00+08:00",
+      "end": "2026-10-09T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 215,
+      "unit": "kcal"
+    },
+    {
+      "id": "2026-10-10-sleep",
+      "metric": "sleep",
+      "start": "2026-10-10T00:00:00+08:00",
+      "end": "2026-10-10T07:00:00+08:00",
+      "source": "watch_1",
+      "value": "asleep",
+      "unit": "stage"
+    },
+    {
+      "id": "2026-10-10-heart_rate",
+      "metric": "heart_rate",
+      "start": "2026-10-10T07:03:00+08:00",
+      "end": "2026-10-10T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 81,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-10-resting_hr",
+      "metric": "resting_hr",
+      "start": "2026-10-10T07:03:00+08:00",
+      "end": "2026-10-10T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 63,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-10-hrv_sdnn",
+      "metric": "hrv_sdnn",
+      "start": "2026-10-10T07:03:00+08:00",
+      "end": "2026-10-10T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 44,
+      "unit": "ms"
+    },
+    {
+      "id": "2026-10-10-steps",
+      "metric": "steps",
+      "start": "2026-10-10T07:00:00+08:00",
+      "end": "2026-10-10T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 4484,
+      "unit": "count"
+    },
+    {
+      "id": "2026-10-10-active_energy",
+      "metric": "active_energy",
+      "start": "2026-10-10T07:00:00+08:00",
+      "end": "2026-10-10T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 226,
+      "unit": "kcal"
+    },
+    {
+      "id": "2026-10-11-sleep",
+      "metric": "sleep",
+      "start": "2026-10-11T00:00:00+08:00",
+      "end": "2026-10-11T07:00:00+08:00",
+      "source": "watch_1",
+      "value": "asleep",
+      "unit": "stage"
+    },
+    {
+      "id": "2026-10-11-heart_rate",
+      "metric": "heart_rate",
+      "start": "2026-10-11T07:03:00+08:00",
+      "end": "2026-10-11T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 82,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-11-resting_hr",
+      "metric": "resting_hr",
+      "start": "2026-10-11T07:03:00+08:00",
+      "end": "2026-10-11T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 59,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-11-hrv_sdnn",
+      "metric": "hrv_sdnn",
+      "start": "2026-10-11T07:03:00+08:00",
+      "end": "2026-10-11T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 43,
+      "unit": "ms"
+    },
+    {
+      "id": "2026-10-11-steps",
+      "metric": "steps",
+      "start": "2026-10-11T07:00:00+08:00",
+      "end": "2026-10-11T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 4755,
+      "unit": "count"
+    },
+    {
+      "id": "2026-10-11-active_energy",
+      "metric": "active_energy",
+      "start": "2026-10-11T07:00:00+08:00",
+      "end": "2026-10-11T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 237,
+      "unit": "kcal"
+    },
+    {
+      "id": "2026-10-12-sleep",
+      "metric": "sleep",
+      "start": "2026-10-12T00:00:00+08:00",
+      "end": "2026-10-12T07:00:00+08:00",
+      "source": "watch_1",
+      "value": "asleep",
+      "unit": "stage"
+    },
+    {
+      "id": "2026-10-12-heart_rate",
+      "metric": "heart_rate",
+      "start": "2026-10-12T07:03:00+08:00",
+      "end": "2026-10-12T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 83,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-12-resting_hr",
+      "metric": "resting_hr",
+      "start": "2026-10-12T07:03:00+08:00",
+      "end": "2026-10-12T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 60,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-12-hrv_sdnn",
+      "metric": "hrv_sdnn",
+      "start": "2026-10-12T07:03:00+08:00",
+      "end": "2026-10-12T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 48,
+      "unit": "ms"
+    },
+    {
+      "id": "2026-10-12-steps",
+      "metric": "steps",
+      "start": "2026-10-12T07:00:00+08:00",
+      "end": "2026-10-12T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 5026,
+      "unit": "count"
+    },
+    {
+      "id": "2026-10-12-active_energy",
+      "metric": "active_energy",
+      "start": "2026-10-12T07:00:00+08:00",
+      "end": "2026-10-12T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 248,
+      "unit": "kcal"
+    },
+    {
+      "id": "2026-10-13-sleep",
+      "metric": "sleep",
+      "start": "2026-10-13T00:00:00+08:00",
+      "end": "2026-10-13T07:00:00+08:00",
+      "source": "watch_1",
+      "value": "asleep",
+      "unit": "stage"
+    },
+    {
+      "id": "2026-10-13-heart_rate",
+      "metric": "heart_rate",
+      "start": "2026-10-13T07:03:00+08:00",
+      "end": "2026-10-13T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 77,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-13-resting_hr",
+      "metric": "resting_hr",
+      "start": "2026-10-13T07:03:00+08:00",
+      "end": "2026-10-13T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 61,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-13-hrv_sdnn",
+      "metric": "hrv_sdnn",
+      "start": "2026-10-13T07:03:00+08:00",
+      "end": "2026-10-13T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 47,
+      "unit": "ms"
+    },
+    {
+      "id": "2026-10-13-steps",
+      "metric": "steps",
+      "start": "2026-10-13T07:00:00+08:00",
+      "end": "2026-10-13T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 5297,
+      "unit": "count"
+    },
+    {
+      "id": "2026-10-13-active_energy",
+      "metric": "active_energy",
+      "start": "2026-10-13T07:00:00+08:00",
+      "end": "2026-10-13T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 182,
+      "unit": "kcal"
+    },
+    {
+      "id": "2026-10-14-sleep",
+      "metric": "sleep",
+      "start": "2026-10-14T08:00:00+08:00",
+      "end": "2026-10-14T14:00:00+08:00",
+      "source": "watch_1",
+      "value": "asleep",
+      "unit": "stage"
+    },
+    {
+      "id": "2026-10-14-heart_rate",
+      "metric": "heart_rate",
+      "start": "2026-10-14T14:03:00+08:00",
+      "end": "2026-10-14T14:03:00+08:00",
+      "source": "watch_1",
+      "value": 78,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-14-resting_hr",
+      "metric": "resting_hr",
+      "start": "2026-10-14T14:03:00+08:00",
+      "end": "2026-10-14T14:03:00+08:00",
+      "source": "watch_1",
+      "value": 62,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-14-hrv_sdnn",
+      "metric": "hrv_sdnn",
+      "start": "2026-10-14T14:03:00+08:00",
+      "end": "2026-10-14T14:03:00+08:00",
+      "source": "watch_1",
+      "value": 46,
+      "unit": "ms"
+    },
+    {
+      "id": "2026-10-14-steps",
+      "metric": "steps",
+      "start": "2026-10-14T14:00:00+08:00",
+      "end": "2026-10-14T14:03:00+08:00",
+      "source": "watch_1",
+      "value": 5568,
+      "unit": "count"
+    },
+    {
+      "id": "2026-10-14-active_energy",
+      "metric": "active_energy",
+      "start": "2026-10-14T14:00:00+08:00",
+      "end": "2026-10-14T14:03:00+08:00",
+      "source": "watch_1",
+      "value": 193,
+      "unit": "kcal"
+    },
+    {
+      "id": "2026-10-15-sleep",
+      "metric": "sleep",
+      "start": "2026-10-15T00:00:00+08:00",
+      "end": "2026-10-15T07:00:00+08:00",
+      "source": "watch_1",
+      "value": "asleep",
+      "unit": "stage"
+    },
+    {
+      "id": "2026-10-15-heart_rate",
+      "metric": "heart_rate",
+      "start": "2026-10-15T07:03:00+08:00",
+      "end": "2026-10-15T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 79,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-15-resting_hr",
+      "metric": "resting_hr",
+      "start": "2026-10-15T07:03:00+08:00",
+      "end": "2026-10-15T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 63,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-15-hrv_sdnn",
+      "metric": "hrv_sdnn",
+      "start": "2026-10-15T07:03:00+08:00",
+      "end": "2026-10-15T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 45,
+      "unit": "ms"
+    },
+    {
+      "id": "2026-10-15-steps",
+      "metric": "steps",
+      "start": "2026-10-15T07:00:00+08:00",
+      "end": "2026-10-15T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 3400,
+      "unit": "count"
+    },
+    {
+      "id": "2026-10-15-active_energy",
+      "metric": "active_energy",
+      "start": "2026-10-15T07:00:00+08:00",
+      "end": "2026-10-15T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 204,
+      "unit": "kcal"
+    },
+    {
+      "id": "2026-10-16-sleep",
+      "metric": "sleep",
+      "start": "2026-10-16T00:00:00+08:00",
+      "end": "2026-10-16T07:00:00+08:00",
+      "source": "watch_1",
+      "value": "asleep",
+      "unit": "stage"
+    },
+    {
+      "id": "2026-10-16-heart_rate",
+      "metric": "heart_rate",
+      "start": "2026-10-16T07:03:00+08:00",
+      "end": "2026-10-16T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 80,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-16-resting_hr",
+      "metric": "resting_hr",
+      "start": "2026-10-16T07:03:00+08:00",
+      "end": "2026-10-16T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 59,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-16-hrv_sdnn",
+      "metric": "hrv_sdnn",
+      "start": "2026-10-16T07:03:00+08:00",
+      "end": "2026-10-16T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 44,
+      "unit": "ms"
+    },
+    {
+      "id": "2026-10-16-steps",
+      "metric": "steps",
+      "start": "2026-10-16T07:00:00+08:00",
+      "end": "2026-10-16T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 3671,
+      "unit": "count"
+    },
+    {
+      "id": "2026-10-16-active_energy",
+      "metric": "active_energy",
+      "start": "2026-10-16T07:00:00+08:00",
+      "end": "2026-10-16T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 215,
+      "unit": "kcal"
+    },
+    {
+      "id": "2026-10-17-sleep",
+      "metric": "sleep",
+      "start": "2026-10-17T00:00:00+08:00",
+      "end": "2026-10-17T07:00:00+08:00",
+      "source": "watch_1",
+      "value": "asleep",
+      "unit": "stage"
+    },
+    {
+      "id": "2026-10-17-heart_rate",
+      "metric": "heart_rate",
+      "start": "2026-10-17T07:03:00+08:00",
+      "end": "2026-10-17T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 81,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-17-resting_hr",
+      "metric": "resting_hr",
+      "start": "2026-10-17T07:03:00+08:00",
+      "end": "2026-10-17T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 60,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-17-hrv_sdnn",
+      "metric": "hrv_sdnn",
+      "start": "2026-10-17T07:03:00+08:00",
+      "end": "2026-10-17T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 43,
+      "unit": "ms"
+    },
+    {
+      "id": "2026-10-17-steps",
+      "metric": "steps",
+      "start": "2026-10-17T07:00:00+08:00",
+      "end": "2026-10-17T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 3942,
+      "unit": "count"
+    },
+    {
+      "id": "2026-10-17-active_energy",
+      "metric": "active_energy",
+      "start": "2026-10-17T07:00:00+08:00",
+      "end": "2026-10-17T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 226,
+      "unit": "kcal"
+    },
+    {
+      "id": "2026-10-18-sleep",
+      "metric": "sleep",
+      "start": "2026-10-18T00:00:00+08:00",
+      "end": "2026-10-18T07:00:00+08:00",
+      "source": "watch_1",
+      "value": "asleep",
+      "unit": "stage"
+    },
+    {
+      "id": "2026-10-18-heart_rate",
+      "metric": "heart_rate",
+      "start": "2026-10-18T07:03:00+08:00",
+      "end": "2026-10-18T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 82,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-18-resting_hr",
+      "metric": "resting_hr",
+      "start": "2026-10-18T07:03:00+08:00",
+      "end": "2026-10-18T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 61,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-18-hrv_sdnn",
+      "metric": "hrv_sdnn",
+      "start": "2026-10-18T07:03:00+08:00",
+      "end": "2026-10-18T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 48,
+      "unit": "ms"
+    },
+    {
+      "id": "2026-10-18-steps",
+      "metric": "steps",
+      "start": "2026-10-18T07:00:00+08:00",
+      "end": "2026-10-18T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 4213,
+      "unit": "count"
+    },
+    {
+      "id": "2026-10-18-active_energy",
+      "metric": "active_energy",
+      "start": "2026-10-18T07:00:00+08:00",
+      "end": "2026-10-18T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 237,
+      "unit": "kcal"
+    },
+    {
+      "id": "2026-10-19-sleep",
+      "metric": "sleep",
+      "start": "2026-10-19T00:00:00+08:00",
+      "end": "2026-10-19T07:00:00+08:00",
+      "source": "watch_1",
+      "value": "asleep",
+      "unit": "stage"
+    },
+    {
+      "id": "2026-10-19-heart_rate",
+      "metric": "heart_rate",
+      "start": "2026-10-19T07:03:00+08:00",
+      "end": "2026-10-19T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 83,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-19-resting_hr",
+      "metric": "resting_hr",
+      "start": "2026-10-19T07:03:00+08:00",
+      "end": "2026-10-19T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 62,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-19-hrv_sdnn",
+      "metric": "hrv_sdnn",
+      "start": "2026-10-19T07:03:00+08:00",
+      "end": "2026-10-19T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 47,
+      "unit": "ms"
+    },
+    {
+      "id": "2026-10-19-steps",
+      "metric": "steps",
+      "start": "2026-10-19T07:00:00+08:00",
+      "end": "2026-10-19T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 4484,
+      "unit": "count"
+    },
+    {
+      "id": "2026-10-19-active_energy",
+      "metric": "active_energy",
+      "start": "2026-10-19T07:00:00+08:00",
+      "end": "2026-10-19T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 248,
+      "unit": "kcal"
+    },
+    {
+      "id": "2026-10-20-sleep",
+      "metric": "sleep",
+      "start": "2026-10-20T00:00:00+08:00",
+      "end": "2026-10-20T07:00:00+08:00",
+      "source": "watch_1",
+      "value": "asleep",
+      "unit": "stage"
+    },
+    {
+      "id": "2026-10-20-heart_rate",
+      "metric": "heart_rate",
+      "start": "2026-10-20T07:03:00+08:00",
+      "end": "2026-10-20T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 77,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-20-resting_hr",
+      "metric": "resting_hr",
+      "start": "2026-10-20T07:03:00+08:00",
+      "end": "2026-10-20T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 63,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-20-hrv_sdnn",
+      "metric": "hrv_sdnn",
+      "start": "2026-10-20T07:03:00+08:00",
+      "end": "2026-10-20T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 46,
+      "unit": "ms"
+    },
+    {
+      "id": "2026-10-20-steps",
+      "metric": "steps",
+      "start": "2026-10-20T07:00:00+08:00",
+      "end": "2026-10-20T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 4755,
+      "unit": "count"
+    },
+    {
+      "id": "2026-10-20-active_energy",
+      "metric": "active_energy",
+      "start": "2026-10-20T07:00:00+08:00",
+      "end": "2026-10-20T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 182,
+      "unit": "kcal"
+    },
+    {
+      "id": "2026-10-21-sleep",
+      "metric": "sleep",
+      "start": "2026-10-21T08:00:00+08:00",
+      "end": "2026-10-21T14:00:00+08:00",
+      "source": "watch_1",
+      "value": "asleep",
+      "unit": "stage"
+    },
+    {
+      "id": "2026-10-21-heart_rate",
+      "metric": "heart_rate",
+      "start": "2026-10-21T14:03:00+08:00",
+      "end": "2026-10-21T14:03:00+08:00",
+      "source": "watch_1",
+      "value": 78,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-21-resting_hr",
+      "metric": "resting_hr",
+      "start": "2026-10-21T14:03:00+08:00",
+      "end": "2026-10-21T14:03:00+08:00",
+      "source": "watch_1",
+      "value": 59,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-21-hrv_sdnn",
+      "metric": "hrv_sdnn",
+      "start": "2026-10-21T14:03:00+08:00",
+      "end": "2026-10-21T14:03:00+08:00",
+      "source": "watch_1",
+      "value": 45,
+      "unit": "ms"
+    },
+    {
+      "id": "2026-10-21-steps",
+      "metric": "steps",
+      "start": "2026-10-21T14:00:00+08:00",
+      "end": "2026-10-21T14:03:00+08:00",
+      "source": "watch_1",
+      "value": 5026,
+      "unit": "count"
+    },
+    {
+      "id": "2026-10-21-active_energy",
+      "metric": "active_energy",
+      "start": "2026-10-21T14:00:00+08:00",
+      "end": "2026-10-21T14:03:00+08:00",
+      "source": "watch_1",
+      "value": 193,
+      "unit": "kcal"
+    },
+    {
+      "id": "2026-10-22-sleep",
+      "metric": "sleep",
+      "start": "2026-10-22T00:00:00+08:00",
+      "end": "2026-10-22T07:00:00+08:00",
+      "source": "watch_1",
+      "value": "asleep",
+      "unit": "stage"
+    },
+    {
+      "id": "2026-10-22-heart_rate",
+      "metric": "heart_rate",
+      "start": "2026-10-22T07:03:00+08:00",
+      "end": "2026-10-22T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 79,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-22-resting_hr",
+      "metric": "resting_hr",
+      "start": "2026-10-22T07:03:00+08:00",
+      "end": "2026-10-22T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 60,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-22-hrv_sdnn",
+      "metric": "hrv_sdnn",
+      "start": "2026-10-22T07:03:00+08:00",
+      "end": "2026-10-22T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 44,
+      "unit": "ms"
+    },
+    {
+      "id": "2026-10-22-steps",
+      "metric": "steps",
+      "start": "2026-10-22T07:00:00+08:00",
+      "end": "2026-10-22T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 5297,
+      "unit": "count"
+    },
+    {
+      "id": "2026-10-22-active_energy",
+      "metric": "active_energy",
+      "start": "2026-10-22T07:00:00+08:00",
+      "end": "2026-10-22T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 204,
+      "unit": "kcal"
+    },
+    {
+      "id": "2026-10-23-sleep",
+      "metric": "sleep",
+      "start": "2026-10-23T00:00:00+08:00",
+      "end": "2026-10-23T07:00:00+08:00",
+      "source": "watch_1",
+      "value": "asleep",
+      "unit": "stage"
+    },
+    {
+      "id": "2026-10-23-heart_rate",
+      "metric": "heart_rate",
+      "start": "2026-10-23T07:03:00+08:00",
+      "end": "2026-10-23T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 80,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-23-resting_hr",
+      "metric": "resting_hr",
+      "start": "2026-10-23T07:03:00+08:00",
+      "end": "2026-10-23T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 61,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-23-hrv_sdnn",
+      "metric": "hrv_sdnn",
+      "start": "2026-10-23T07:03:00+08:00",
+      "end": "2026-10-23T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 43,
+      "unit": "ms"
+    },
+    {
+      "id": "2026-10-23-steps",
+      "metric": "steps",
+      "start": "2026-10-23T07:00:00+08:00",
+      "end": "2026-10-23T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 5568,
+      "unit": "count"
+    },
+    {
+      "id": "2026-10-23-active_energy",
+      "metric": "active_energy",
+      "start": "2026-10-23T07:00:00+08:00",
+      "end": "2026-10-23T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 215,
+      "unit": "kcal"
+    },
+    {
+      "id": "2026-10-24-sleep",
+      "metric": "sleep",
+      "start": "2026-10-24T00:00:00+08:00",
+      "end": "2026-10-24T07:00:00+08:00",
+      "source": "watch_1",
+      "value": "asleep",
+      "unit": "stage"
+    },
+    {
+      "id": "2026-10-24-heart_rate",
+      "metric": "heart_rate",
+      "start": "2026-10-24T07:03:00+08:00",
+      "end": "2026-10-24T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 81,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-24-resting_hr",
+      "metric": "resting_hr",
+      "start": "2026-10-24T07:03:00+08:00",
+      "end": "2026-10-24T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 62,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-24-hrv_sdnn",
+      "metric": "hrv_sdnn",
+      "start": "2026-10-24T07:03:00+08:00",
+      "end": "2026-10-24T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 48,
+      "unit": "ms"
+    },
+    {
+      "id": "2026-10-24-steps",
+      "metric": "steps",
+      "start": "2026-10-24T07:00:00+08:00",
+      "end": "2026-10-24T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 3400,
+      "unit": "count"
+    },
+    {
+      "id": "2026-10-24-active_energy",
+      "metric": "active_energy",
+      "start": "2026-10-24T07:00:00+08:00",
+      "end": "2026-10-24T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 226,
+      "unit": "kcal"
+    },
+    {
+      "id": "2026-10-25-sleep",
+      "metric": "sleep",
+      "start": "2026-10-25T00:00:00+08:00",
+      "end": "2026-10-25T07:00:00+08:00",
+      "source": "watch_1",
+      "value": "asleep",
+      "unit": "stage"
+    },
+    {
+      "id": "2026-10-25-heart_rate",
+      "metric": "heart_rate",
+      "start": "2026-10-25T07:03:00+08:00",
+      "end": "2026-10-25T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 82,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-25-resting_hr",
+      "metric": "resting_hr",
+      "start": "2026-10-25T07:03:00+08:00",
+      "end": "2026-10-25T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 63,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-25-hrv_sdnn",
+      "metric": "hrv_sdnn",
+      "start": "2026-10-25T07:03:00+08:00",
+      "end": "2026-10-25T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 47,
+      "unit": "ms"
+    },
+    {
+      "id": "2026-10-25-steps",
+      "metric": "steps",
+      "start": "2026-10-25T07:00:00+08:00",
+      "end": "2026-10-25T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 3671,
+      "unit": "count"
+    },
+    {
+      "id": "2026-10-25-active_energy",
+      "metric": "active_energy",
+      "start": "2026-10-25T07:00:00+08:00",
+      "end": "2026-10-25T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 237,
+      "unit": "kcal"
+    },
+    {
+      "id": "2026-10-26-sleep",
+      "metric": "sleep",
+      "start": "2026-10-26T00:00:00+08:00",
+      "end": "2026-10-26T07:00:00+08:00",
+      "source": "watch_1",
+      "value": "asleep",
+      "unit": "stage"
+    },
+    {
+      "id": "2026-10-26-heart_rate",
+      "metric": "heart_rate",
+      "start": "2026-10-26T07:03:00+08:00",
+      "end": "2026-10-26T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 83,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-26-resting_hr",
+      "metric": "resting_hr",
+      "start": "2026-10-26T07:03:00+08:00",
+      "end": "2026-10-26T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 59,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-26-hrv_sdnn",
+      "metric": "hrv_sdnn",
+      "start": "2026-10-26T07:03:00+08:00",
+      "end": "2026-10-26T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 46,
+      "unit": "ms"
+    },
+    {
+      "id": "2026-10-26-steps",
+      "metric": "steps",
+      "start": "2026-10-26T07:00:00+08:00",
+      "end": "2026-10-26T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 3942,
+      "unit": "count"
+    },
+    {
+      "id": "2026-10-26-active_energy",
+      "metric": "active_energy",
+      "start": "2026-10-26T07:00:00+08:00",
+      "end": "2026-10-26T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 248,
+      "unit": "kcal"
+    },
+    {
+      "id": "2026-10-27-sleep",
+      "metric": "sleep",
+      "start": "2026-10-27T00:00:00+08:00",
+      "end": "2026-10-27T07:00:00+08:00",
+      "source": "watch_1",
+      "value": "asleep",
+      "unit": "stage"
+    },
+    {
+      "id": "2026-10-27-heart_rate",
+      "metric": "heart_rate",
+      "start": "2026-10-27T07:03:00+08:00",
+      "end": "2026-10-27T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 77,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-27-resting_hr",
+      "metric": "resting_hr",
+      "start": "2026-10-27T07:03:00+08:00",
+      "end": "2026-10-27T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 60,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-27-hrv_sdnn",
+      "metric": "hrv_sdnn",
+      "start": "2026-10-27T07:03:00+08:00",
+      "end": "2026-10-27T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 45,
+      "unit": "ms"
+    },
+    {
+      "id": "2026-10-27-steps",
+      "metric": "steps",
+      "start": "2026-10-27T07:00:00+08:00",
+      "end": "2026-10-27T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 4213,
+      "unit": "count"
+    },
+    {
+      "id": "2026-10-27-active_energy",
+      "metric": "active_energy",
+      "start": "2026-10-27T07:00:00+08:00",
+      "end": "2026-10-27T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 182,
+      "unit": "kcal"
+    },
+    {
+      "id": "2026-10-28-sleep",
+      "metric": "sleep",
+      "start": "2026-10-28T08:00:00+08:00",
+      "end": "2026-10-28T14:00:00+08:00",
+      "source": "watch_1",
+      "value": "asleep",
+      "unit": "stage"
+    },
+    {
+      "id": "2026-10-28-heart_rate",
+      "metric": "heart_rate",
+      "start": "2026-10-28T14:03:00+08:00",
+      "end": "2026-10-28T14:03:00+08:00",
+      "source": "watch_1",
+      "value": 78,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-28-resting_hr",
+      "metric": "resting_hr",
+      "start": "2026-10-28T14:03:00+08:00",
+      "end": "2026-10-28T14:03:00+08:00",
+      "source": "watch_1",
+      "value": 61,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-28-hrv_sdnn",
+      "metric": "hrv_sdnn",
+      "start": "2026-10-28T14:03:00+08:00",
+      "end": "2026-10-28T14:03:00+08:00",
+      "source": "watch_1",
+      "value": 44,
+      "unit": "ms"
+    },
+    {
+      "id": "2026-10-28-steps",
+      "metric": "steps",
+      "start": "2026-10-28T14:00:00+08:00",
+      "end": "2026-10-28T14:03:00+08:00",
+      "source": "watch_1",
+      "value": 4484,
+      "unit": "count"
+    },
+    {
+      "id": "2026-10-28-active_energy",
+      "metric": "active_energy",
+      "start": "2026-10-28T14:00:00+08:00",
+      "end": "2026-10-28T14:03:00+08:00",
+      "source": "watch_1",
+      "value": 193,
+      "unit": "kcal"
+    },
+    {
+      "id": "2026-10-29-sleep",
+      "metric": "sleep",
+      "start": "2026-10-29T00:00:00+08:00",
+      "end": "2026-10-29T07:00:00+08:00",
+      "source": "watch_1",
+      "value": "asleep",
+      "unit": "stage"
+    },
+    {
+      "id": "2026-10-29-heart_rate",
+      "metric": "heart_rate",
+      "start": "2026-10-29T07:03:00+08:00",
+      "end": "2026-10-29T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 79,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-29-resting_hr",
+      "metric": "resting_hr",
+      "start": "2026-10-29T07:03:00+08:00",
+      "end": "2026-10-29T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 62,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-29-hrv_sdnn",
+      "metric": "hrv_sdnn",
+      "start": "2026-10-29T07:03:00+08:00",
+      "end": "2026-10-29T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 43,
+      "unit": "ms"
+    },
+    {
+      "id": "2026-10-29-steps",
+      "metric": "steps",
+      "start": "2026-10-29T07:00:00+08:00",
+      "end": "2026-10-29T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 4755,
+      "unit": "count"
+    },
+    {
+      "id": "2026-10-29-active_energy",
+      "metric": "active_energy",
+      "start": "2026-10-29T07:00:00+08:00",
+      "end": "2026-10-29T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 204,
+      "unit": "kcal"
+    },
+    {
+      "id": "2026-10-30-sleep",
+      "metric": "sleep",
+      "start": "2026-10-30T00:00:00+08:00",
+      "end": "2026-10-30T07:00:00+08:00",
+      "source": "watch_1",
+      "value": "asleep",
+      "unit": "stage"
+    },
+    {
+      "id": "2026-10-30-heart_rate",
+      "metric": "heart_rate",
+      "start": "2026-10-30T07:03:00+08:00",
+      "end": "2026-10-30T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 80,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-30-resting_hr",
+      "metric": "resting_hr",
+      "start": "2026-10-30T07:03:00+08:00",
+      "end": "2026-10-30T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 63,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-30-hrv_sdnn",
+      "metric": "hrv_sdnn",
+      "start": "2026-10-30T07:03:00+08:00",
+      "end": "2026-10-30T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 48,
+      "unit": "ms"
+    },
+    {
+      "id": "2026-10-30-steps",
+      "metric": "steps",
+      "start": "2026-10-30T07:00:00+08:00",
+      "end": "2026-10-30T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 5026,
+      "unit": "count"
+    },
+    {
+      "id": "2026-10-30-active_energy",
+      "metric": "active_energy",
+      "start": "2026-10-30T07:00:00+08:00",
+      "end": "2026-10-30T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 215,
+      "unit": "kcal"
+    },
+    {
+      "id": "2026-10-31-sleep",
+      "metric": "sleep",
+      "start": "2026-10-31T00:00:00+08:00",
+      "end": "2026-10-31T07:00:00+08:00",
+      "source": "watch_1",
+      "value": "asleep",
+      "unit": "stage"
+    },
+    {
+      "id": "2026-10-31-heart_rate",
+      "metric": "heart_rate",
+      "start": "2026-10-31T07:03:00+08:00",
+      "end": "2026-10-31T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 81,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-31-resting_hr",
+      "metric": "resting_hr",
+      "start": "2026-10-31T07:03:00+08:00",
+      "end": "2026-10-31T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 59,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-10-31-hrv_sdnn",
+      "metric": "hrv_sdnn",
+      "start": "2026-10-31T07:03:00+08:00",
+      "end": "2026-10-31T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 47,
+      "unit": "ms"
+    },
+    {
+      "id": "2026-10-31-steps",
+      "metric": "steps",
+      "start": "2026-10-31T07:00:00+08:00",
+      "end": "2026-10-31T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 5297,
+      "unit": "count"
+    },
+    {
+      "id": "2026-10-31-active_energy",
+      "metric": "active_energy",
+      "start": "2026-10-31T07:00:00+08:00",
+      "end": "2026-10-31T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 226,
+      "unit": "kcal"
+    },
+    {
+      "id": "2026-11-01-sleep",
+      "metric": "sleep",
+      "start": "2026-11-01T00:00:00+08:00",
+      "end": "2026-11-01T07:00:00+08:00",
+      "source": "watch_1",
+      "value": "asleep",
+      "unit": "stage"
+    },
+    {
+      "id": "2026-11-01-heart_rate",
+      "metric": "heart_rate",
+      "start": "2026-11-01T07:03:00+08:00",
+      "end": "2026-11-01T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 82,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-11-01-resting_hr",
+      "metric": "resting_hr",
+      "start": "2026-11-01T07:03:00+08:00",
+      "end": "2026-11-01T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 60,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-11-01-hrv_sdnn",
+      "metric": "hrv_sdnn",
+      "start": "2026-11-01T07:03:00+08:00",
+      "end": "2026-11-01T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 46,
+      "unit": "ms"
+    },
+    {
+      "id": "2026-11-01-steps",
+      "metric": "steps",
+      "start": "2026-11-01T07:00:00+08:00",
+      "end": "2026-11-01T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 5568,
+      "unit": "count"
+    },
+    {
+      "id": "2026-11-01-active_energy",
+      "metric": "active_energy",
+      "start": "2026-11-01T07:00:00+08:00",
+      "end": "2026-11-01T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 237,
+      "unit": "kcal"
+    },
+    {
+      "id": "2026-11-02-sleep",
+      "metric": "sleep",
+      "start": "2026-11-02T00:00:00+08:00",
+      "end": "2026-11-02T07:00:00+08:00",
+      "source": "watch_1",
+      "value": "asleep",
+      "unit": "stage"
+    },
+    {
+      "id": "2026-11-02-heart_rate",
+      "metric": "heart_rate",
+      "start": "2026-11-02T07:03:00+08:00",
+      "end": "2026-11-02T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 83,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-11-02-resting_hr",
+      "metric": "resting_hr",
+      "start": "2026-11-02T07:03:00+08:00",
+      "end": "2026-11-02T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 61,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-11-02-hrv_sdnn",
+      "metric": "hrv_sdnn",
+      "start": "2026-11-02T07:03:00+08:00",
+      "end": "2026-11-02T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 45,
+      "unit": "ms"
+    },
+    {
+      "id": "2026-11-02-steps",
+      "metric": "steps",
+      "start": "2026-11-02T07:00:00+08:00",
+      "end": "2026-11-02T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 3400,
+      "unit": "count"
+    },
+    {
+      "id": "2026-11-02-active_energy",
+      "metric": "active_energy",
+      "start": "2026-11-02T07:00:00+08:00",
+      "end": "2026-11-02T07:03:00+08:00",
+      "source": "watch_1",
+      "value": 248,
+      "unit": "kcal"
+    },
+    {
+      "id": "2026-11-03-sleep",
+      "metric": "sleep",
+      "start": "2026-11-03T08:30:00+08:00",
+      "end": "2026-11-03T14:00:00+08:00",
+      "source": "watch_1",
+      "value": "asleep",
+      "unit": "stage"
+    },
+    {
+      "id": "2026-11-03-heart_rate",
+      "metric": "heart_rate",
+      "start": "2026-11-03T14:03:00+08:00",
+      "end": "2026-11-03T14:03:00+08:00",
+      "source": "watch_1",
+      "value": 77,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-11-03-resting_hr",
+      "metric": "resting_hr",
+      "start": "2026-11-03T14:03:00+08:00",
+      "end": "2026-11-03T14:03:00+08:00",
+      "source": "watch_1",
+      "value": 62,
+      "unit": "bpm"
+    },
+    {
+      "id": "2026-11-03-steps",
+      "metric": "steps",
+      "start": "2026-11-03T14:00:00+08:00",
+      "end": "2026-11-03T14:03:00+08:00",
+      "source": "watch_1",
+      "value": 3671,
+      "unit": "count"
+    },
+    {
+      "id": "2026-11-03-active_energy",
+      "metric": "active_energy",
+      "start": "2026-11-03T14:00:00+08:00",
+      "end": "2026-11-03T14:03:00+08:00",
+      "source": "watch_1",
+      "value": 182,
+      "unit": "kcal"
+    }
+  ]
+}

@@ -72,3 +72,7 @@ python launch_studio.py
 含组件版使用官方 LibreOffice 26.8.3 Windows x64 MSI 中的转换程序及同包的 System64 运行库，保留许可声明，省略离线帮助和拼写词典。在临时目录解开 MSI 后传入含 `program/soffice.com` 的目录，与 `System64` 同级。[上游源码及许可](https://www.libreoffice.org/about-us/licenses/) · [本版 MSI 的 URL 和散列](https://github.com/microsoft/winget-pkgs/blob/master/manifests/t/TheDocumentFoundation/LibreOffice/26.8.3.1/TheDocumentFoundation.LibreOffice.installer.yaml)
 
 界面采用本机供应的 Noto Sans SC Variable（Fontsource 5.3.1，SIL OFL），字体和字体许可随程序分发。[字体许可](web/fonts/LICENSE) · [Apple 材质设计参考](https://developer.apple.com/design/human-interface-guidelines/materials)
+
+### macOS Apple Silicon
+
+Mac 用户可从 `v0.1.0-beta.2` Release 下载 `Yehang-0.1.0-beta.2-macOS-arm64.zip`，解压后将应用拖入“应用程序”。支持 macOS 13+、Apple M 系列芯片，无需另装 Python。构建方法、首次启动及 Office 转换要求见 [macOS 打包说明](packaging/macOS.md)。

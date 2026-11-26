@@ -44,9 +44,18 @@ while pending:
         req = Requirement(item)
         if not req.marker or req.marker.evaluate({"extra": ""}):
             pending.append(req.name)
-shutil.copyfile(Path(sys.base_prefix) / "LICENSE.txt", out / "Python-LICENSE.txt")
+python_license = next(
+    p for p in (
+        Path(sys.base_prefix) / "LICENSE.txt",
+        Path(sys.base_prefix) / f"lib/python{sys.version_info.major}.{sys.version_info.minor}/LICENSE.txt",
+    ) if p.is_file()
+)
+shutil.copyfile(python_license, out / "Python-LICENSE.txt")
 for dest in (Path(sys.base_prefix) / "tcl").rglob("license.terms"):
     local = out / "Tcl-Tk" / dest.relative_to(Path(sys.base_prefix) / "tcl")
     local.parent.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(dest, local)
 shutil.copyfile(root / "knowledge/Pulsr-LICENSE.txt", out / "Pulsr-LICENSE.txt")
+
+for license_file in (root / "packaging/licenses").glob("*.terms"):
+    shutil.copyfile(license_file, out / license_file.name)

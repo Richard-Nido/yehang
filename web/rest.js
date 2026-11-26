@@ -1,3 +1,4 @@
+import { feedbackDraft } from "./feedback-draft.js";
 import {
   $,
   $$,
@@ -29,7 +30,7 @@ export function restPage(refresh, initial) {
  <div class="timeline"><div class="track" id="track"><div id="segment" class="segment" title="拖动以移动休息时段"><i class="handle" title="拖动以调整时长"></i></div></div><div class="axis"><span id="axisStart"></span><span>拖动色块移动 · 拖动右端调整时长</span><span id="axisEnd"></span></div></div>
  <label class="field">休息时长 <input class="range" id="duration" type="range" min="1" step="1"></label><div class="wrap"><button class="ghost" id="startTime">选择开始时间</button><button class="ghost" id="endTime">选择结束时间</button></div><p id="conflict" class="warn" hidden></p>
  <div class="row section"><small>起止日期和时间均可自由调整</small><button class="primary" id="savePlan">保存休息计划</button></div></div>
- <section class="panel section"><h2>接下来的计划</h2>${d.plans.length ? d.plans.map((p, i) => `<div class="entry"><span class="bubble">${icon("clock")}</span><div><b>${fmt(p.start)} – ${fmt(p.end)}</b><p class="detail">${p.minutes} 分钟</p></div><button class="quiet" data-edit="${i}">调整</button></div>`).join("") : '<p class="empty">保存后，你的休息计划会显示在这里。</p>'}</section>
+ <section class="panel section"><h2>接下来的计划</h2>${d.plans.length ? d.plans.map((p, i) => `<div class="entry"><span class="bubble">${icon("clock")}</span><div><b>${fmt(p.start)} – ${fmt(p.end)}</b><p class="detail">${p.minutes} 分钟</p></div><button class="quiet" data-edit="${i}">调整</button><button class="ghost" data-review="${i}">反馈</button></div>`).join("") : '<p class="empty">保存后，你的休息计划会显示在这里。</p>'}</section>
  <details><summary>推荐依据</summary><p class="note">在未来七天的空档中比较开始时间、目标时长和工作前缓冲。近期睡眠与个人基线、恢复信号都会影响排序。资料不足时参考 20 分钟短休，睡眠偏少时优先预留 30 分钟。具体阈值为 Beta 版设计参数。${r?.assumed ? "未标记可休息时段时，按日间或夜班前后的空档估算。" : ""}建议仅供成人日程安排参考。</p><a class="quiet" href="https://pubmed.ncbi.nlm.nih.gov/16796222/" target="_blank" rel="noreferrer">短时小睡研究 ↗</a></details>`;
   const track = $("#track"),
     seg = $("#segment"),
@@ -129,6 +130,14 @@ export function restPage(refresh, initial) {
     await refresh();
     toast("已保存休息计划");
   };
+  $$("[data-review]").forEach(
+    (el) =>
+      (el.onclick = () => {
+        const plan = d.plans[+el.dataset.review];
+        state.week = plan.start.slice(0, 10);
+        location.hash = "review";
+      }),
+  );
   $$("[data-edit]").forEach(
     (el) =>
       (el.onclick = () => {
@@ -152,11 +161,11 @@ export function reviewPage(refresh) {
     `<section class="panel soft"><small>${daysFrom(d.weekEnd, -6).slice(5)} 至 ${d.weekEnd.slice(5)}</small><h2>本周完成 ${done} 次休息</h2><p class="note">共 ${d.reviews.length} 项计划，${observed} 项有可对照的生理记录。</p></section>
  ${
    !d.reviews.length
-     ? '<section class="panel section"><h3>这里会留下每一次休息</h3><p class="note">先保存休息计划，结束后点选执行结果。导入后续健康记录，便可对照休息前后的变化。</p><a class="button" href="#rest">查看休息建议 →</a></section>'
+     ? '<section class="panel section"><h3>这里会留下每一次休息</h3><p class="note">保存休息计划后可随时反馈。导入后续健康记录，便可对照休息前后的变化。</p><a class="button" href="#rest">查看休息建议 →</a></section>'
      : d.reviews
          .map(
            (r, i) =>
-             `<section class="panel section"><div class="panelhead"><h3>${fmt(r.start)} – ${fmt(r.end)}</h3><small>${r.minutes} 分钟</small></div>${r.end <= d.now ? `<div class="wrap">${["完成", "部分完成", "跳过"].map((s) => `<button class="chip" data-i="${i}" data-status="${s}" aria-pressed="${r.status === s}">${s}</button>`).join("")}</div>` : "<p class='detail'>计划结束后可点选执行结果。</p>"}${
+             `<section class="panel section"><div class="panelhead"><h3>${fmt(r.start)} – ${fmt(r.end)}</h3><small>${r.minutes} 分钟</small></div><div class="wrap">${["完成", "部分完成", "跳过"].map((s) => `<button class="chip" data-i="${i}" data-status="${s}" aria-pressed="${r.status === s}">${s}</button>`).join("")}</div>${
                ["完成", "部分完成"].includes(r.status)
                  ? `<div class="feel"><small>休息后感觉（选填）</small><div class="wrap">${[
                      [1, "精神不错"],
@@ -169,10 +178,14 @@ export function reviewPage(refresh) {
                      )
                      .join("")}</div></div>`
                  : ""
-             }<div class="evidence"><b>${esc(r.evidence.state)}</b>${r.evidence.details.map((t) => `<p>${esc(t)}</p>`).join("")}</div>${r.evidence.details.length ? "<small>同时段睡眠和前后指标用于个人对照。单次变化难以判断恢复是否充分。</small>" : ""}</section>`,
+             }<button class="ghost freeform" data-draft="${i}">用自己的话复盘</button>${r.note ? `<p class="evidence">我的记录 · ${esc(r.note)}</p>` : ""}<div class="evidence"><b>${esc(r.evidence.state)}</b>${r.evidence.details.map((t) => `<p>${esc(t)}</p>`).join("")}</div>${r.evidence.details.length ? "<small>同时段睡眠和前后指标用于个人对照。单次变化难以判断恢复是否充分。</small>" : ""}</section>`,
          )
          .join("")
  }`;
+  $$("[data-draft]").forEach(
+    (el) =>
+      (el.onclick = () => feedbackDraft(d.reviews[+el.dataset.draft], refresh)),
+  );
   $$("[data-feel]").forEach(
     (el) =>
       (el.onclick = async () => {

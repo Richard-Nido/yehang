@@ -1,5 +1,9 @@
+import { visibleMetrics } from "./preferences.js";
+import { plot } from "./charts.js";
 import { $, $$, state, icon, esc, fmt, api, toast } from "./shared.js";
 const metrics = {
+  recovery: ["身体恢复度", "分", "spark", "#267a68", "#d6f3e4"],
+  stress: ["日级生理压力", "分", "hrv", "#7951a1", "#efe2ff"],
   sleep: ["睡眠", "分钟", "sleep", "#775f9d", "#efe8f7"],
   resting_hr: ["静息心率", "bpm", "heart", "#a34560", "#fae8eb"],
   hrv_sdnn: ["心率变异性", "ms", "hrv", "#247e73", "#e2f3ed"],
@@ -9,34 +13,16 @@ const metrics = {
 };
 let active = "sleep",
   explanations = new Map();
-export function clearExplanation() {
-  explanations.clear();
+export function clearExplanation(profile) {
+  if (!profile) {
+    explanations.clear();
+    return;
+  }
+  for (const key of explanations.keys())
+    if (JSON.parse(key)[0] === profile) explanations.delete(key);
 }
-function chart(values, color, large = false) {
-  const valid = values.filter((v) => v != null),
-    w = 260,
-    h = large ? 100 : 30;
-  if (!valid.length)
-    return `<div class="${large ? "bigchart" : "spark"}" style="display:grid;align-items:center;color:#73847c;font-size:12px">${large ? "这七天还没有可绘制的记录" : "暂无记录"}</div>`;
-  const min = Math.min(...valid),
-    max = Math.max(...valid),
-    span = max - min || 1;
-  let last = null,
-    lines = "",
-    dots = "";
-  values.forEach((v, i) => {
-    if (v == null) {
-      last = null;
-      return;
-    }
-    const x = 5 + (i * (w - 10)) / 6,
-      y = max === min ? h / 2 : 5 + (h - 10) * (1 - (v - min) / span);
-    if (last) lines += `M${last[0]},${last[1]} L${x},${y} `;
-    dots += `<circle cx="${x}" cy="${y}" r="${large ? 3 : 2}" fill="${color}"><title>${state.data.days[i]} · ${v}</title></circle>`;
-    last = [x, y];
-  });
-  return `<svg role="img" aria-label="七日走势，${values.map((v) => (v == null ? "缺测" : Math.round(v))).join("，")}" class="${large ? "bigchart" : "spark"}" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none">${large ? [0.15, 0.5, 0.85].map((y) => `<path d="M0 ${h * y}h${w}" stroke="#dce4db" stroke-dasharray="3 5"/>`).join("") : ""}<path d="${lines}" fill="none" stroke="${color}" stroke-width="${large ? 2.5 : 1.8}" vector-effect="non-scaling-stroke"/>${dots}</svg>`;
-}
+const score = (m) => m === "stress" || m === "recovery";
+const bars = (m) => ["sleep", "steps", "active_energy"].includes(m);
 function num(m, v) {
   if (v == null) return "—";
   if (m === "sleep") {
@@ -56,21 +42,24 @@ export function home(refresh) {
     state.day = e.target.value;
     refresh();
   };
+  if (!visibleMetrics().includes(active)) active = visibleMetrics()[0];
   const any = Object.values(d.series).some((row) => row.some((v) => v != null));
   $("#screen").innerHTML =
     `<section class="hero"><small class="inline">${icon("rest")} 建议休息时段</small><h2>${r ? r.start.slice(11, 16) + " – " + r.end.slice(11, 16) : "七日内暂无空档"}</h2><p>${r ? fmt(r.start).slice(0, 5) + " · 短休 " + r.minutes + " 分钟" : "可在七日安排中调整日程"}</p><div class="wrap"><button class="ghost inline" id="heroGo">${r ? "调整休息计划" : "查看七日安排"} ${icon("arrow")}</button>${!any ? '<a href="#data" class="herolink">导入我的数据 ↗</a><button id="firstDemo" class="herolink">体验示例</button>' : ""}</div></section>
  <section class="section"><div class="panelhead"><h2>生理指标</h2><small>${d.day.slice(5).replace("-", "/")} · 点选查看走势</small></div><div class="grid">${Object.entries(
    metrics,
  )
+   .filter(([m]) => visibleMetrics().includes(m))
    .map(
      ([m, [label, , i, c, bg]]) =>
-       `<button class="card ${m === active ? "sel" : ""}" aria-pressed="${m === active}" data-m="${m}" style="--accent:${c};--tint:${bg}"><span class="cardtop"><span class="bubble">${icon(i)}</span>${label}</span><div class="cardnum">${num(m, d.series[m].at(-1))}</div>${chart(d.series[m], c)}</button>`,
+       `<button class="card ${score(m) ? "computed" : ""} ${m === active ? "sel" : ""}" aria-pressed="${m === active}" data-m="${m}" style="--accent:${c};--tint:${bg}"><span class="cardtop"><span class="bubble">${icon(i)}</span>${label}</span>${score(m) ? '<small class="calculated">自研算法估算</small>' : ""}<div class="cardnum">${num(m, d.series[m].at(-1))}</div>${plot(d.series[m], c, false, bars(m), score(m))}</button>`,
    )
    .join("")}</div></section>
- <div class="duo"><section class="panel"><div class="panelhead"><h3 id="trendTitle"></h3><small id="trendRange">近 7 日</small></div><div id="trend"></div><div class="axis">${d.days.map((x) => `<span>${x.slice(5).replace("-", "/")}</span>`).join("")}</div></section><section class="panel"><div class="panelhead"><h3 class="inline">${icon("spark")} 身体解读</h3><button class="quiet" id="retry" hidden>重试</button></div><div id="insight" class="text" aria-live="polite">${any ? "正在读取解读…" : "上传 Apple 健康导出文件，即可查看自己的睡眠、心率和活动变化。"}</div>${any ? "" : '<a class="button inline" href="#data">导入健康数据 →</a>'}</section></div>
- ${d.recovery != null || d.stress != null ? `<div class="panel section"><h3>个人基线对照</h3><p class="note">身体恢复度 ${d.recovery ?? "资料不足"}　·　日级生理压力 ${d.stress ?? "资料不足"}。分值为探索性估计。</p></div>` : ""}`;
+ <div class="duo"><section class="panel"><div class="panelhead"><h3 id="trendTitle"></h3><small id="trendRange">近 7 日</small></div><div id="trend"></div><div class="chartDays">${d.days.map((x, i) => `<button data-point="${i}" aria-label="查看 ${x}">${x.slice(5).replace("-", "/")}</button>`).join("")}</div><p id="pointValue" class="detail"></p></section><section class="panel"><div class="panelhead"><h3 class="inline">${icon("spark")} 身体解读</h3><button class="quiet" id="retry" hidden>重试</button></div><div id="insight" class="text" aria-live="polite">${any ? "正在读取解读…" : "上传 Apple 健康导出文件，即可查看自己的睡眠、心率和活动变化。"}</div>${any ? "" : '<a class="button inline" href="#data">导入健康数据 →</a>'}</section></div>
+ `;
   if ($("#firstDemo")) $("#firstDemo").onclick = () => $("#profile").click();
   $("#heroGo").onclick = () => (location.hash = r ? "rest" : "schedule");
+  let point = 6;
   function draw() {
     const [name, unit, , color] = metrics[active];
     $("#trendTitle").textContent = name + " · " + unit;
@@ -85,7 +74,29 @@ export function home(refresh) {
           " " +
           unit
         : "");
-    $("#trend").innerHTML = chart(d.series[active], color, true);
+    $("#trend").innerHTML = plot(
+      d.series[active],
+      color,
+      true,
+      bars(active),
+      score(active),
+      point,
+    );
+    $("#pointValue").textContent =
+      d.days[point] +
+      " · " +
+      name +
+      " " +
+      (d.series[active][point] == null
+        ? "暂无记录"
+        : Math.round(d.series[active][point]) + " " + unit);
+    $$("[data-point]").forEach((el) => {
+      el.setAttribute("aria-pressed", String(+el.dataset.point === point));
+      el.onclick = () => {
+        point = +el.dataset.point;
+        draw();
+      };
+    });
   }
   $$("[data-m]").forEach(
     (el) =>
@@ -111,7 +122,7 @@ export function home(refresh) {
         );
       const j = await explanations.get(key);
       if (!target.isConnected) return;
-      target.innerHTML = `<div class="source">${j.source === "api" ? "模型解读" : j.source === "empty" ? "数据不足" : "模型调用失败 · 离线规则解读"}</div>${esc(j.text)}`;
+      target.innerHTML = `<div class="source">${j.source === "api" ? "模型解读" : j.source === "empty" ? "数据不足" : "模型调用失败 · 离线规则解读"}</div><ul class="insightList">${(j.items?.length ? j.items : [j.text]).map((t) => `<li>${esc(t)}</li>`).join("")}</ul>`;
       $("#retry").hidden = j.source !== "offline";
       $("#retry").onclick = () => {
         target.textContent = "正在请求模型…";

@@ -1,3 +1,4 @@
+import { preferences } from "./preferences.js";
 import {
   $,
   $$,
@@ -30,13 +31,14 @@ $("#nav").innerHTML = Object.entries(pages)
       `<a class="navItem" href="#${id}">${icon(i)}<span>${short}</span></a>`,
   )
   .join("");
-$("#settings").innerHTML = icon("settings") + "模型设置";
-$("#settings").onclick = () => settings();
+$("#settings").innerHTML = icon("settings") + "设置";
+$("#settings").onclick = () => preferences(refresh, settings, clearExplanation);
 $("main").insertAdjacentHTML(
   "afterbegin",
-  `<div class="mobilebrand"><a href="#home" class="inline"><img src="/assets/mark.svg" alt=""><b>夜航</b></a><div class="mobiletools"><button class="chip" id="mProfile"></button><button class="ghost" aria-label="模型设置" id="mSettings">${icon("settings")}</button></div></div>`,
+  `<div class="mobilebrand"><a href="#home" class="inline"><img src="/assets/mark.svg" alt=""><b>夜航</b></a><div class="mobiletools"><button class="chip" id="mProfile"></button><button class="ghost" aria-label="设置" id="mSettings">${icon("settings")}</button></div></div>`,
 );
-$("#mSettings").onclick = () => settings();
+$("#mSettings").onclick = () =>
+  preferences(refresh, settings, clearExplanation);
 async function switchProfile(p) {
   state.p = p;
   localStorage.setItem("yh-profile", p);
@@ -71,7 +73,7 @@ async function settings(scope = "text") {
  <form id="providerForm"><label class="field">Base URL<input id="base" type="url" required placeholder="https://api.example.com/v1" value="${esc(cfg.base)}"></label>
  <label class="field">接口协议<select id="proto">${protocolOptions.map(([id, n]) => `<option value="${id}" ${cfg.protocol === id ? "selected" : ""}>${n}</option>`).join("")}</select></label>
  <label class="field">API Key<input id="key" type="password" autocomplete="off" placeholder="${cfg.base ? "使用已保存的密钥，或输入新密钥" : "输入供应商密钥"}"></label>
- <label class="field">模型名称<input id="model" list="modelList" required placeholder="选择或输入供应商的模型 ID" value="${esc(cfg.model)}"><datalist id="modelList"></datalist></label>
+ <label class="field">模型名称<input id="model" required placeholder="选择或输入供应商的模型 ID" value="${esc(cfg.model)}"></label><section id="availableModels" class="modelPicker" hidden><label class="field">选择可用模型<input type="search" id="filterModels" placeholder="搜索全部模型"></label><div id="modelList" class="modelOptions" role="group" aria-label="可用模型"></div></section>
  <div class="wrap"><button type="button" class="ghost" id="models">获取模型列表</button><button type="submit" class="primary">保存配置</button></div><p class="detail" id="providerMsg" role="status"></p></form>${!text && cfg.independent ? '<button id="inherit" class="quiet">改用生理解读的服务</button>' : ""}`,
   );
   const raw = () => ({
@@ -88,16 +90,42 @@ async function settings(scope = "text") {
     msg.textContent = "正在读取供应商模型…";
     try {
       const j = await api("models", raw());
-      $("#modelList").innerHTML = j.models
-        .map((m) => `<option value="${esc(m)}"></option>`)
-        .join("");
-      msg.textContent = `可选 ${j.models.length} 个模型，请点击模型名称选择。`;
-      if (!$("#model").value && j.models.length === 1)
-        $("#model").value = j.models[0];
-      $("#model").focus();
-      try {
-        $("#model").showPicker();
-      } catch {}
+      if (!b.contains(msg)) return;
+      const ids = [
+        ...new Set(j.models.filter((m) => typeof m === "string" && m.trim())),
+      ];
+      const box = $("#availableModels", b),
+        list = $("#modelList", b),
+        search = $("#filterModels", b),
+        field = $("#model", b);
+      box.hidden = false;
+      function options() {
+        const matches = ids.filter((m) =>
+          m.toLowerCase().includes(search.value.trim().toLowerCase()),
+        );
+        list.replaceChildren();
+        for (const name of matches) {
+          const choice = document.createElement("button");
+          choice.type = "button";
+          choice.className = "modelOption";
+          choice.textContent = name;
+          choice.setAttribute("aria-pressed", String(field.value === name));
+          choice.onclick = () => {
+            field.value = name;
+            options();
+            msg.textContent = "已选择 " + name + "，点击保存配置生效。";
+          };
+          list.append(choice);
+        }
+        if (!matches.length)
+          list.textContent = "没有匹配的模型，可手动填写名称。";
+      }
+      search.value = "";
+      search.oninput = options;
+      field.oninput = options;
+      options();
+      msg.textContent = `已读取 ${ids.length} 个模型。点选上方列表，或直接填写模型名称。`;
+      search.focus();
     } catch (e) {
       msg.textContent = e.message + " 也可手动输入模型名称。";
     }
@@ -124,7 +152,7 @@ async function settings(scope = "text") {
 function dataPage(refresh) {
   const demo = state.p === "synthetic-demo";
   $("#screen").innerHTML =
-    `<section class="panel"><h2>导入健康记录</h2><p class="note">在 iPhone 的「健康 → 头像 → 导出所有健康数据」导出并解压，选择 export.xml。也支持夜航格式的个人 JSON。</p>${demo ? "<button id='personalImport' class='primary'>切换到我的档案并导入</button>" : dropZone("health", ".xml,.json", "将健康文件拖放到这里", "XML 或 JSON · 单个文件最大 1 GB")}<p class="detail section">系统自动合并重复记录，并按上海时间归日。</p></section><section class="panel section"><div class="row"><div><h3>排班表</h3><p class="detail">从 PDF 或图片识别班次，也可逐日点选。</p></div><a class="button" href="#schedule">导入排班</a></div></section>`;
+    `<section class="panel"><h2>导入健康记录</h2><p class="note">在 iPhone 的「健康 → 头像 → 导出所有健康数据」导出并解压，选择 export.xml。也支持夜航格式的个人 JSON。</p>${demo ? "<button id='personalImport' class='primary'>切换到我的档案并导入</button>" : dropZone("health", ".xml,.json", "将健康文件拖放到这里", "XML 或 JSON · 单个文件最大 1 GB")}<p class="detail section">系统自动合并重复记录，并按上海时间归日。</p></section><section class="panel section"><div class="row"><div><h3>排班表</h3><p class="detail">从 Office 文件、PDF 或图片识别班次，也可逐日点选。</p></div><a class="button" href="#schedule">导入排班</a></div></section>`;
   if (demo) {
     $("#personalImport").onclick = () => switchProfile("personal-main");
     return;
@@ -145,6 +173,7 @@ function dataPage(refresh) {
   });
 }
 let run = 0;
+let lastPage = null;
 async function refresh() {
   const token = ++run;
   const id = location.hash.slice(1);
@@ -179,6 +208,21 @@ async function refresh() {
       " 日　" +
       weekday(date);
     render(refresh);
+    if (
+      lastPage &&
+      lastPage !== state.page &&
+      document.documentElement.dataset.motion !== "reduce" &&
+      !matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      $("#screen").animate(
+        [
+          { opacity: 0.55, transform: "translateY(5px)" },
+          { opacity: 1, transform: "none" },
+        ],
+        { duration: 180, easing: "cubic-bezier(.2,.75,.25,1)" },
+      );
+    }
+    lastPage = state.page;
   } catch (e) {
     if (token === run) {
       $("#screen").innerHTML =

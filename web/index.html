@@ -10,6 +10,7 @@
     <title>夜航 · 身体与日程</title>
     <link rel="icon" href="/assets/mark.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="/assets/style.css" />
+    <link rel="stylesheet" href="/assets/material.css" />
   </head>
   <body>
     <a class="skip" href="#content">跳到内容</a>
@@ -36,9 +37,9 @@
       </header>
       <div id="screen" aria-live="polite"><p>正在读取本机记录…</p></div>
     </main>
-    <dialog id="sheet">
+    <dialog id="sheet" aria-labelledby="sheetTitle">
       <div class="sheethead">
-        <h2></h2>
+        <h2 id="sheetTitle"></h2>
         <button class="close" aria-label="关闭">×</button>
       </div>
       <div id="sheetbody"></div>

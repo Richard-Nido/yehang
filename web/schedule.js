@@ -57,7 +57,7 @@ export function schedulePage(refresh) {
   );
   $("#screen").innerHTML =
     `<div class="panel"><div class="panelhead"><h2>${first.slice(5).replace("-", "/")} — ${days.at(-1).slice(5).replace("-", "/")}</h2><label><span class="offscreen">七日安排起始日</span><input class="control" type="date" id="weekStart" value="${first}"></label></div>${dayBar(days, [selected])}<div class="section"><h3>${weekday(selected)}的安排</h3>${matches.length ? matches.map((b, i) => `<div class="entry"><span class="bubble">${icon(b.kind === "rest" ? "rest" : "calendar")}</span><div><b>${esc(b.title)}</b><p class="detail">${b.kind === "rest" ? "全天" : fmt(b.start) + " – " + fmt(b.end)}</p></div><button class="quiet" data-del="${i}" aria-label="移除${esc(b.title)}">移除</button></div>`).join("") : '<p class="empty">这天还没有日程。可以添加班次，或从下面导入排班表。</p>'}</div></div>
- <section class="panel section"><h2>从排班表导入</h2><p class="note">上传后会将排班页发送给配置的视觉模型。识别结果可按姓名筛选，确认后加入七日安排。</p>${dropZone("roster", ".pdf,.png,.jpg,.jpeg,.webp", "放入七日排班表", "支持 PDF、JPG、PNG、WebP，可拖放到这里")}</section>`;
+ <section class="panel section"><h2>从排班表导入</h2><p class="note">Office 文件先在本机转成页面，再将排班页发送给配置的视觉模型。识别结果可按姓名筛选，确认后加入七日安排。</p>${dropZone("roster", ".pdf,.png,.jpg,.jpeg,.webp,.doc,.docx,.docm,.dot,.dotx,.dotm,.rtf,.odt,.ott,.xls,.xlsx,.xlsm,.xlsb,.xlt,.xltx,.xltm,.csv,.tsv,.ods,.ots,.ppt,.pptx,.pptm,.pps,.ppsx,.ppsm,.pot,.potx,.potm,.odp,.otp", "放入七日排班表", "支持 Word、Excel、PowerPoint 文档与模板，以及 PDF 和图片")}</section>`;
   $$("[data-day]").forEach(
     (b) =>
       (b.onclick = () => {

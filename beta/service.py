@@ -8,7 +8,7 @@ from core.health_state import assess
 from storage import feedback, planning, schedule, workspace as ws
 from beta.rest import DAY, MIN, followup, recommend
 from beta.timebase import ZONE, local, stamp
-from beta import provider
+from beta import provider, demo
 
 PERSON = "personal-main"
 DEMO = "synthetic-demo"
@@ -24,6 +24,9 @@ def mode(p):
 
 def setup(db):
     with db:
+        db.execute(
+            "CREATE TABLE IF NOT EXISTS beta_demo_editions(edition TEXT PRIMARY KEY)"
+        )
         db.execute(
             "CREATE TABLE IF NOT EXISTS beta_labels(profile TEXT,id TEXT,title TEXT,PRIMARY KEY(profile,id))"
         )
@@ -81,8 +84,10 @@ def observations(db, p, first, last, prefs):
 
 def snapshot(db, p, selected=None, review_end=None, schedule_start=None):
     mode(p)
+    setup(db)
     if p == DEMO:
         new_demo(db)
+        demo.extend(db, DEMO)
     with db:
         db.execute("BEGIN")
         view = planning.read(db, p, ZONE.key)
@@ -112,7 +117,6 @@ def snapshot(db, p, selected=None, review_end=None, schedule_start=None):
                 prefs,
             )
         contexts = schedule.contexts(db, p, ZONE.key)
-        state = assess(data, day, contexts)
         labels = dict(
             db.execute("SELECT id,title FROM beta_labels WHERE profile=?", (p,))
         )
@@ -181,11 +185,16 @@ def snapshot(db, p, selected=None, review_end=None, schedule_start=None):
                     minutes=r["minutes"],
                     status=r["status"],
                     fatigue=r["fatigue"],
+                    note=r["note"] or "",
                     evidence=evidence,
                 )
             )
         days = [day - i * DAY for i in reversed(range(7))]
         series = {m: [data[m].get(d, Feature()).value for d in days] for m in SIGNALS}
+        scores = [assess(data, d, contexts) for d in days]
+        series["recovery"] = [score.recovery for score in scores]
+        series["stress"] = [score.stress for score in scores]
+        state = scores[-1]
         return dict(
             profile=p,
             revision=view.revision,

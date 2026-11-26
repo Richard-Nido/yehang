@@ -14,3 +14,5 @@ output/playwright/
 .ruff_cache/
 .DS_Store
 大模型API.txt
+.build/
+Yehang.spec

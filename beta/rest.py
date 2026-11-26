@@ -115,7 +115,7 @@ def recommend(now, blocks, plans, features, contexts):
 def followup(plan, rows, sources, now):
     start, end = local(plan["start"]), local(plan["end"])
     if now < end:
-        return {"state": "计划结束后更新", "details": []}
+        return {"state": "已开放执行反馈 · 等待设备记录", "details": []}
     good = [r for r in rows if not r["excluded"] and local(r["end"]) <= now]
     overlap = sum(
         (min(b, end) - max(a, start)) / MIN

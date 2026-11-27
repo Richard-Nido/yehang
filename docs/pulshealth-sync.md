@@ -1,8 +1,10 @@
 # PulsHealth 局域网同步试运行
 
-本次源码更新基于 beta.2，尚未替换正式 Release 的安装包。个人基线算法沿用原实现，新增 Puls Sync Protocol v1 适配。先按 README 创建 `.venv` 并安装 `requirements.txt`，Mac 再双击 `start-puls-mac.command`，进入 `http://127.0.0.1:8521/#data`。脚本优先使用本仓库 `.venv`，开发机也可使用同级 `macos-build-env`。
+本次更新基于 beta.2，随 beta.3 Mac 包提供，个人基线算法沿用原实现，新增 Puls Sync Protocol v1 适配。安装包直接运行即可。源码试运行则先按 README 创建 `.venv` 并安装 `requirements.txt`，Mac 再双击 `start-puls-mac.command`，进入 `http://127.0.0.1:8521/#data`。脚本优先使用本仓库 `.venv`，开发机也可使用同级 `macos-build-env`。
 
 本次脚本独立使用 `.local/puls-preview/interactive.sqlite3`，不读取原有个人健康库，也不继承原模型配置。局域网接收默认关闭；在“数据输入”点“开启临时局域网同步”后才监听 8520。主网页仍仅监听本机 8521。
+
+Mac 安装包使用 `~/Library/Application Support/Yehang/interactive.sqlite3`。为避免旧 XML 与同步身份重复，已有 XML 的用户先保留旧库备份，再使用全新数据库试运行；不要直接混合两个入口。数据库位置也可通过 `YEHANG_DB_PATH` 指定。安装包的主网页默认监听本机 8518。
 
 ## iPhone
 

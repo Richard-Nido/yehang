@@ -1,10 +1,14 @@
 # 夜航
 
-**0.1.0-beta.2** · 本机运行的轮班休息助手
+**0.1.0-beta.3** · 本机运行的轮班休息助手
 
 把 Apple 健康记录和未来七天的日程放在一起，找到可以休息的时段。保存计划后，可用实际记录和自己的感受回看这次休息。应用统一按上海时间展示。
 
-当前源码已包含 2026-11-27 更新：PulsHealth 局域网同步试运行、可休息时段展示、目标入睡时间与本机行动建议。已有 beta.2 安装包保持原版本；体验这些更新请按下方从源码启动。手机连接说明见 [PulsHealth 同步](docs/pulshealth-sync.md)。
+当前源码已包含 2026-11-27 更新：PulsHealth 局域网同步试运行、可休息时段展示、目标入睡时间与本机行动建议。Mac 可下载 beta.3；Windows 已发布的安装包仍为 beta.2，体验这些更新请按下方从源码启动。手机连接说明见 [PulsHealth 同步](docs/pulshealth-sync.md)。
+
+## Mac 安装
+
+从 [beta.3 Release](https://github.com/Richard-Nido/yehang/releases/tag/v0.1.0-beta.3) 下载 `Yehang-0.1.0-beta.3-macOS-arm64.zip`，解压后把 `Yehang.app` 拖到“应用程序”，双击启动。支持 Apple 芯片、macOS 13+，内置 Python，不需本地模型。数据保存在 `~/Library/Application Support/Yehang/`，更新应用会沿用该目录；开发脚本的试运行库使用独立目录。构建、系统拦截时的打开方式及 Office 支持见 [macOS 说明](packaging/macOS.md)。
 
 ## Windows 安装
 

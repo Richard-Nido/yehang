@@ -6,9 +6,9 @@ from core.demo import sources_by_metric
 from core.features import Feature, daily_features
 from core.health_state import assess
 from storage import feedback, planning, schedule, workspace as ws
-from beta.rest import DAY, MIN, followup, recommend
+from beta.rest import DAY, MIN, followup, recommend, rest_windows
 from beta.timebase import ZONE, local, stamp
-from beta import provider, demo
+from beta import provider, demo, coaching
 
 PERSON = "personal-main"
 DEMO = "synthetic-demo"
@@ -23,6 +23,7 @@ def mode(p):
 
 
 def setup(db):
+    coaching.initialize(db)
     with db:
         db.execute(
             "CREATE TABLE IF NOT EXISTS beta_demo_editions(edition TEXT PRIMARY KEY)"
@@ -142,9 +143,14 @@ def snapshot(db, p, selected=None, review_end=None, schedule_start=None):
                     )
                 )
         active = list({r["plan_id"]: r for r in view.history}.values())
+        coaching_prefs = coaching.preferences(db, p)
+        target_sleep = coaching.target_for(coaching_prefs, now)
         rec = recommend(
-            now, [b for b in blocks if b["kind"] != "rest"], active, current, contexts
+            now, [b for b in blocks if b["kind"] != "rest"], active, current, contexts, target_sleep
         )
+        availability = rest_windows(now, [b for b in blocks if b["kind"] != "rest"], active, target_sleep)
+        advice = coaching.build(now, current, contexts, blocks, active,
+            schedule.records(db, p, "events"), coaching_prefs, rec, availability)
         week, _ = feedback.week(db, p, week_end, ZONE.key)
         review_rows = rows_for(
             db,
@@ -207,7 +213,16 @@ def snapshot(db, p, selected=None, review_end=None, schedule_start=None):
             partial=data["sleep"].get(day, Feature()).partial,
             recovery=state.recovery,
             stress=state.stress,
+            notable_signals=[
+                dict(metric=m, value=s.current.value, center=s.center,
+                     n=s.n, basis=s.basis)
+                for m in ("sleep", "resting_hr", "hrv_sdnn")
+                if (s := state.signals[m]).z is not None
+                and (s.z >= 1 if m == "resting_hr" else s.z <= -1)
+            ],
             recommendation=rec,
+            availability=availability,
+            coaching=advice,
             blocks=[
                 b
                 for b in blocks

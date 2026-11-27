@@ -24,8 +24,15 @@ export function restPage(refresh, initial) {
     end = new Date(initial?.end || r?.end || start + 20 * 60000).getTime();
   const existing = initial?.id;
   $("#action").innerHTML = '<a class="button" href="#schedule">查看日程</a>';
+  const availability = d.availability;
+  const windows = availability?.windows || [];
+  const windowRows = windows.map((w) => `<div class="entry"><div><b>${fmt(w.start)} – ${fmt(w.end)}</b><p class="detail">可用 ${w.minutes} 分钟</p></div></div>`);
+  const availablePanel = `<section class="panel"><div class="panelhead"><h2>可休息时段</h2><small>${availability?.until ? "下次主要睡眠前" : "未来七天"} · 上海时间</small></div>
+    <p class="note">${availability?.assumed ? "以下根据日程估算，尚未由你确认。可到七日安排添加自己的可休息区间。" : "根据你设置的可休息区间，已扣除通勤、工作和已保存计划，并在下一项日程前预留 15 分钟。"}</p>
+    ${windowRows.length ? windowRows.slice(0,3).join("") + (windowRows.length > 3 ? `<details><summary>其余 ${windowRows.length-3} 个时段</summary>${windowRows.slice(3).join("")}</details>` : "") : '<p class="empty">目前没有连续至少 10 分钟的可休息时段。可到七日安排调整。</p>'}
+    <a class="quiet" href="#schedule">查看或调整可休息区间 →</a></section>`;
   $("#screen").innerHTML =
-    `<div class="panel"><div class="panelhead"><h2>${existing ? "调整已存计划" : r ? "推荐短休" : "自选休息时段"}</h2><span class="bubble" style="--tint:#e5f0e3;--accent:#3c6e53">${icon("rest")}</span></div>
+    `${availablePanel}<div class="panel section"><div class="panelhead"><h2>${existing ? "调整已存计划" : r ? "推荐短休" : "自选休息时段"}</h2><span class="bubble" style="--tint:#e5f0e3;--accent:#3c6e53">${icon("rest")}</span></div>
  <p class="note">${existing ? "可移动开始时间或调整时长。" : r ? esc(r.reason) : "当前七天没有满足条件的推荐窗口。你仍可自行安排。"}</p><div class="timeval" id="clockDisplay"></div><small id="spanLabel"></small>
  <div class="timeline"><div class="track" id="track"><div id="segment" class="segment" title="拖动以移动休息时段"><i class="handle" title="拖动以调整时长"></i></div></div><div class="axis"><span id="axisStart"></span><span>拖动色块移动 · 拖动右端调整时长</span><span id="axisEnd"></span></div></div>
  <label class="field">休息时长 <input class="range" id="duration" type="range" min="1" step="1"></label><div class="wrap"><button class="ghost" id="startTime">选择开始时间</button><button class="ghost" id="endTime">选择结束时间</button></div><p id="conflict" class="warn" hidden></p>

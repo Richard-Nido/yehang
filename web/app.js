@@ -1,3 +1,4 @@
+import { syncPanel, bindSync } from "./health-sync.js";
 import { preferences } from "./preferences.js";
 import {
   $,
@@ -152,11 +153,12 @@ async function settings(scope = "text") {
 function dataPage(refresh) {
   const demo = state.p === "synthetic-demo";
   $("#screen").innerHTML =
-    `<section class="panel"><h2>导入健康记录</h2><p class="note">在 iPhone 的「健康 → 头像 → 导出所有健康数据」导出并解压，选择 export.xml。也支持夜航格式的个人 JSON。</p>${demo ? "<button id='personalImport' class='primary'>切换到我的档案并导入</button>" : dropZone("health", ".xml,.json", "将健康文件拖放到这里", "XML 或 JSON · 单个文件最大 1 GB")}<p class="detail section">系统自动合并重复记录，并按上海时间归日。</p></section><section class="panel section"><div class="row"><div><h3>排班表</h3><p class="detail">从 Office 文件、PDF 或图片识别班次，也可逐日点选。</p></div><a class="button" href="#schedule">导入排班</a></div></section>`;
+    `${demo ? "" : syncPanel()}<section class="panel section"><h2>导入健康记录</h2><p class="note">在 iPhone 的「健康 → 头像 → 导出所有健康数据」导出并解压，选择 export.xml。也支持夜航格式的个人 JSON。</p>${demo ? "<button id='personalImport' class='primary'>切换到我的档案并导入</button>" : dropZone("health", ".xml,.json", "将健康文件拖放到这里", "XML 或 JSON · 单个文件最大 1 GB")}<p class="detail section">系统自动合并重复记录，并按上海时间归日。</p></section><section class="panel section"><div class="row"><div><h3>排班表</h3><p class="detail">从 Office 文件、PDF 或图片识别班次，也可逐日点选。</p></div><a class="button" href="#schedule">导入排班</a></div></section>`;
   if (demo) {
     $("#personalImport").onclick = () => switchProfile("personal-main");
     return;
   }
+  bindSync(refresh);
   bindDrop("health", async (f) => {
     const j = await upload("health", f);
     state.day = "";
@@ -240,3 +242,15 @@ window.addEventListener("hashchange", () => {
   refresh();
 });
 refresh();
+
+// 有新批次时刷新当前个人页面；没有变化时不重复触发分析或打断编辑。
+let syncRevision;
+setInterval(async () => {
+  if (state.p !== "personal-main" || document.hidden || document.querySelector("dialog[open]") ||
+      document.activeElement?.matches("input,textarea,select")) return;
+  try {
+    const s = await api("health-sync");
+    if (syncRevision !== undefined && s.last_sync !== syncRevision) { clearExplanation(); await refresh(); }
+    syncRevision = s.last_sync;
+  } catch (_) { /* 服务未运行时沿用当前页面 */ }
+}, 5000);

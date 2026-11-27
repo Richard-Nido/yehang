@@ -453,3 +453,28 @@ select {
     }
   }
 }
+
+/* 身体解读：先分析，再突出行动，证据只在底部统一展开。 */
+.coachingAnalysis h4,
+.coachingNext h4 {
+  margin: 0;
+  font-size: 1.08rem;
+}
+.coachingAnalysis h4 small { margin-left: 8px; font-weight: 400; color: var(--muted); }
+.coachingChange { margin: 13px 0 0; font-size: .94rem; line-height: 1.75; }
+.coachingChange small { display: block; color: var(--muted); font-size: .78rem; margin-top: 4px; }
+.coachingNext { margin-top: 25px; }
+.coachingNext .panelhead { gap: 10px; flex-wrap: wrap; }
+.coachingActions { display: grid; gap: 12px; margin-top: 15px; }
+.coachingAction { padding: 18px; border: 1px solid #cddedb; border-radius: 17px; background: #f1f7f5; }
+.coachingAction > small { display: block; color: #34645c; font-weight: 700; letter-spacing: .04em; }
+.coachingAction h4 { margin: 8px 0 10px; font-size: clamp(1.12rem, 2.3vw, 1.35rem); line-height: 1.4; }
+.coachingAction p { margin: 0; font-size: .94rem; line-height: 1.75; }
+.coachingAction .button { display: inline-flex; margin-top: 14px; background: white; color: #174f47; }
+.coachingEvidence { margin-top: 23px; padding-top: 17px; border-top: 1px solid var(--line); }
+.coachingEvidence summary { color: var(--muted); }
+.coachingEvidence h4 { margin: 22px 0 12px; }
+.coachingCondition,
+.coachingReference { padding: 11px 0; border-bottom: 1px solid var(--line); }
+.coachingCondition p,
+.coachingReference p { margin: 5px 0; }

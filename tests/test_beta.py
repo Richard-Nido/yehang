@@ -78,12 +78,12 @@ class BetaFlow(unittest.TestCase):
         self.state()
         with patch.object(provider, "complete", return_value="合成资料解释") as model:
             self.assertEqual(
-                self.post("explanation", day="2026-11-03").json()["source"], "api"
+                self.post("explanation", day="2026-11-03", rewrite=True).json()["source"], "api"
             )
             prompt = model.call_args.args[0]
             self.assertNotIn("watch_1", prompt)
         with patch.object(provider, "complete", side_effect=ValueError("offline")):
-            r = self.post("explanation", day="2026-11-03").json()
+            r = self.post("explanation", day="2026-11-03", rewrite=True).json()
             self.assertEqual((r["message"], r["source"]), ("模型调用失败", "offline"))
 
     def test_health_import_duplicate_rollback_and_followup(self):

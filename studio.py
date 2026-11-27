@@ -57,6 +57,24 @@ def failed(request, exc):
     )
 
 
+@app.get("/api/health-sync")
+def health_sync_status():
+    from beta.health_sync import controller
+    from storage.health_sync import status
+    with ws.open_workspace() as db:
+        return {**controller.info(), **status(db)}
+
+
+@app.post("/api/health-sync")
+def health_sync_control(body: dict):
+    from beta.health_sync import controller
+    if body.get("action") == "start":
+        return controller.start(int(body.get("port", 8520)))
+    if body.get("action") == "stop":
+        return controller.stop()
+    raise ValueError("未知同步操作")
+
+
 @app.get("/api/state")
 def state(
     profile: str = service.PERSON,
@@ -89,59 +107,30 @@ def get_models(body: dict):
     return {"models": provider.models(body)}
 
 
+@app.post("/api/coaching")
+def coaching_preferences(body: dict):
+    from beta import coaching
+    with ws.open_workspace() as db:
+        state = service.snapshot(db, body["profile"])
+        return coaching.save_preferences(db, body["profile"], service.mode(body["profile"]),
+            body["revision"], body, state["now"])
+
+
 @app.post("/api/explanation")
 def explain(body: dict):
     with ws.open_workspace() as db:
         state = service.snapshot(db, body["profile"], body.get("day"))
-    labels = [
-        "睡眠分钟",
-        "静息心率 bpm",
-        "HRV SDNN ms",
-        "心率 bpm",
-        "步数",
-        "活动能量 kcal",
-    ]
-    summary = {label: state["series"][m] for label, m in zip(labels, service.SIGNALS)}
-    if not any(v is not None for row in summary.values() for v in row):
-        return {"source": "empty", "text": "导入健康记录后，这里会解释最近七天的变化。"}
-    summary["观察日睡眠可能仅覆盖部分时段"] = state["partial"]
-    prompt = (
-        "请用简体中文，依据下列七天的日汇总解释观察日生理数据，最后一天为观察日。"
-        "写两至四条，每条一行，每条用一句话解释一个指标或变化。null 表示缺测，不把缺失当作零。"
-        "睡眠覆盖不完整时不要推断睡眠不足。不做诊断、因果推断、治疗或适岗建议。只返回纯文本。\n"
-        + json.dumps(summary, ensure_ascii=False)
-    )
-    try:
-        text = provider.complete(prompt)[:3000]
-        items = [
-            line.strip(" •-*　")
-            for line in re.split(r"[\r\n]+|(?<=[。！？])", text)
-            if line.strip(" •-*　")
-        ]
-        return {"source": "api", "text": text, "items": items}
-    except Exception:
-        lines = []
-        names = ["睡眠", "静息心率", "心率变异性", "心率", "步数", "活动能量"]
-        units = ["分钟", "bpm", "ms", "bpm", "步", "kcal"]
-        for idx, (label, values) in enumerate(list(summary.items())[:-1]):
-            if values[-1] is None:
-                continue
-            prior = [v for v in values[:-1] if v is not None]
-            text = f"{names[idx]}为 {values[-1]:g} {units[idx]}"
-            if prior and not (label == "睡眠分钟" and state["partial"]):
-                from statistics import median
-
-                text += f"，此前 {len(prior)} 个有记录日的中位数为 {median(prior):g} {units[idx]}"
-            if label == "睡眠分钟" and state["partial"]:
-                text += "，记录仅覆盖部分时段"
-            lines.append(text + "。")
-        return {
-            "source": "offline",
-            "items": lines[:3],
-            "message": "模型调用失败",
-            "text": "".join(lines[:3])
-            or "观察日缺少有效数据，暂时无法与此前记录比较。",
-        }
+    advice = state["coaching"]
+    result = {"source": "rules", "items": [c["text"] for c in advice["cards"]],
+              "text": "\n".join(c["text"] for c in advice["cards"]), **advice}
+    # 兼容可选 API 文字补充；默认完全本机生成，模型不决定行动或改写规则。
+    if body.get("rewrite"):
+        prompt = "仅概括下面已确定的建议，不增加剂量、时间、诊断或新行动：\n" + result["text"]
+        try:
+            result.update(source="api", narrative=provider.complete(prompt)[:3000])
+        except Exception:
+            result.update(source="offline", message="模型调用失败")
+    return result
 
 
 @app.post("/api/events")
@@ -295,6 +284,13 @@ async def upload(
                 raise ValueError("文件格式不完整，本次导入已撤销。") from None
 
         return await run_in_threadpool(process)
+
+
+@app.get("/assets/{name}.md")
+def knowledge_note(name: str):
+    if name not in {"actions", "health-state"}:
+        return JSONResponse({"error": "not found"}, status_code=404)
+    return FileResponse(ROOT / "knowledge" / (name + ".md"), media_type="text/plain; charset=utf-8")
 
 
 @app.get("/")

@@ -13,10 +13,12 @@ MIN = timedelta(minutes=1)
 DAY = timedelta(days=1)
 
 
-def recommend(now, blocks, plans, features, contexts):
+def planning_intervals(now, blocks, plans, latest_end=None):
     now = local(now)
     day = now.date()
     limit = datetime.combine(day + 7 * DAY, time.min, ZONE)
+    if latest_end is not None:
+        limit = min(limit, local(latest_end))
     busy = [
         (local(b["start"]), local(b["end"])) for b in blocks if b["kind"] != "available"
     ]
@@ -43,6 +45,35 @@ def recommend(now, blocks, plans, features, contexts):
     spans = explicit or [
         (max(now, a), min(limit, b)) for a, b in windows if a < limit and b > now
     ]
+    if latest_end is not None and any(b["kind"] == "available" and local(b["end"]) > now for b in blocks):
+        # 用户明确标出的空档若都晚于目标睡眠，不在其他时间凭空生成可用窗口。
+        spans = explicit
+        assumed = False
+    else:
+        assumed = not bool(explicit)
+    return difference(spans, busy), busy, nights, assumed
+
+
+def rest_windows(now, blocks, plans, latest_end=None):
+    free, busy, _, assumed = planning_intervals(now, blocks, plans, latest_end)
+    windows = []
+    for a, b in free:
+        start = a.replace(second=0, microsecond=0)
+        if start < a:
+            start += MIN
+        # 与推荐算法一致：在下一项已知安排前保留 15 分钟缓冲。
+        next_busy = min((x for x, _ in busy if x >= start), default=b + DAY)
+        end = min(b, next_busy - 15 * MIN).replace(second=0, microsecond=0)
+        if end - start >= 10 * MIN:
+            windows.append(dict(start=stamp(start), end=stamp(end), minutes=int((end-start)/MIN)))
+    return dict(assumed=assumed, windows=windows, until=stamp(latest_end) if latest_end else None)
+
+
+def recommend(now, blocks, plans, features, contexts, latest_end=None):
+    now = local(now)
+    day = now.date()
+    limit = datetime.combine(day + 7 * DAY, time.min, ZONE)
+    free, busy, nights, assumed = planning_intervals(now, blocks, plans, latest_end)
     recent = [
         d
         for d, f in features["sleep"].items()
@@ -63,7 +94,7 @@ def recommend(now, blocks, plans, features, contexts):
         reasons.append("今天的恢复度估计低于个人常态")
     target = 30 if reasons else 20
     best = None
-    for a, b in difference(spans, busy):
+    for a, b in free:
         start = a.replace(second=0, microsecond=0)
         if start < a:
             start += MIN
@@ -108,7 +139,7 @@ def recommend(now, blocks, plans, features, contexts):
         end=stamp(start + duration * MIN),
         minutes=duration,
         reason=f"{reason}。{timing}，在已知下一项日程前留出缓冲。",
-        assumed=not bool(explicit),
+        assumed=assumed,
     )
 
 

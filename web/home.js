@@ -1,3 +1,4 @@
+import { coachingPanel } from "./coaching.js";
 import { visibleMetrics } from "./preferences.js";
 import { plot } from "./charts.js";
 import { $, $$, state, icon, esc, fmt, api, toast } from "./shared.js";
@@ -110,28 +111,5 @@ export function home(refresh) {
       }),
   );
   draw();
-  if (!any) return;
-  const key = JSON.stringify([d.profile, d.day, d.series, d.partial]);
-  const target = $("#insight");
-  async function explain(force) {
-    try {
-      if (force || !explanations.has(key))
-        explanations.set(
-          key,
-          api("explanation", { profile: d.profile, day: d.day }),
-        );
-      const j = await explanations.get(key);
-      if (!target.isConnected) return;
-      target.innerHTML = `<div class="source">${j.source === "api" ? "模型解读" : j.source === "empty" ? "数据不足" : "模型调用失败 · 离线规则解读"}</div><ul class="insightList">${(j.items?.length ? j.items : [j.text]).map((t) => `<li>${esc(t)}</li>`).join("")}</ul>`;
-      $("#retry").hidden = j.source !== "offline";
-      $("#retry").onclick = () => {
-        target.textContent = "正在请求模型…";
-        explain(true);
-      };
-    } catch (e) {
-      explanations.delete(key);
-      if (target.isConnected) target.textContent = e.message;
-    }
-  }
-  explain(false);
+  coachingPanel($("#insight"), d, refresh);
 }

@@ -1,0 +1,9 @@
+This product includes protocol parsing adapted from:
+PulsHealth, https://github.com/PulsHealth/pulshealth
+examples/receivers/python-sqlite/receiver.py
+Licensed under the Apache License, Version 2.0; see LICENSE in this directory.
+Changes: retained protocol parsing only; stricter integer schemaVersion check;
+Yehang implements its own authentication, six-metric normalization and storage.
+No upstream health data, personal information or credentials are included.
+
+Retrieved 2026-11-27; upstream main at lookup: 34899159b56fd961f24abb311f93ef250646135b
